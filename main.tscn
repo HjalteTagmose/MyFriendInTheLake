@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://roxthgw71bi6"]
+
+[ext_resource type="Script" path="res://Test.cs" id="1_rsj3e"]
+[ext_resource type="Resource" uid="uid://dawf3iq04b07y" path="res://test.ink" id="2_ii24x"]
+
+[node name="main" type="Node2D"]
+
+[node name="Test" type="VBoxContainer" parent="."]
+script = ExtResource("1_rsj3e")
+story = ExtResource("2_ii24x")
