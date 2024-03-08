@@ -1,10 +1,96 @@
 [gd_scene load_steps=3 format=3 uid="uid://roxthgw71bi6"]
 
-[ext_resource type="Script" path="res://Test.cs" id="1_rsj3e"]
-[ext_resource type="Resource" uid="uid://dawf3iq04b07y" path="res://test.ink" id="2_ii24x"]
+[ext_resource type="Theme" uid="uid://c0ifn6jgsmbgv" path="res://theme.tres" id="1_qtflq"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lilpc"]
+bg_color = Color(1, 1, 1, 1)
 
 [node name="main" type="Node2D"]
 
-[node name="Test" type="VBoxContainer" parent="."]
-script = ExtResource("1_rsj3e")
-story = ExtResource("2_ii24x")
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 1920.0
+offset_bottom = 1080.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Inventory" type="Panel" parent="Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.5
+anchor_bottom = 1.0
+grow_vertical = 2
+size_flags_horizontal = 3
+
+[node name="GridContainer" type="GridContainer" parent="Control/Inventory"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+columns = 2
+
+[node name="Button" type="Button" parent="Control/Inventory/GridContainer"]
+custom_minimum_size = Vector2(200, 100)
+layout_mode = 2
+theme = ExtResource("1_qtflq")
+text = "option1"
+
+[node name="Button2" type="Button" parent="Control/Inventory/GridContainer"]
+custom_minimum_size = Vector2(200, 100)
+layout_mode = 2
+theme = ExtResource("1_qtflq")
+text = "option2"
+
+[node name="Button3" type="Button" parent="Control/Inventory/GridContainer"]
+custom_minimum_size = Vector2(200, 100)
+layout_mode = 2
+theme = ExtResource("1_qtflq")
+text = "option3"
+
+[node name="Button4" type="Button" parent="Control/Inventory/GridContainer"]
+custom_minimum_size = Vector2(200, 100)
+layout_mode = 2
+theme = ExtResource("1_qtflq")
+text = "option4"
+
+[node name="Speech Side" type="Panel" parent="Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_vertical = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_lilpc")
+
+[node name="SpeechBubble" type="Panel" parent="Control/Speech Side"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -324.0
+offset_top = -54.0
+offset_right = 324.0
+offset_bottom = 55.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="Control/Speech Side/SpeechBubble"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_qtflq")
+horizontal_alignment = 1
+vertical_alignment = 1

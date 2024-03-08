@@ -1,0 +1,16 @@
+[remap]
+
+importer="ink"
+type="Resource"
+uid="uid://d0uoly6i1ad6u"
+path="res://.godot/imported/vlad.ink-94859243a1358af583a17a101b9fe8c9.res"
+
+[deps]
+
+source_file="res://story/vlad.ink"
+dest_files=["res://.godot/imported/vlad.ink-94859243a1358af583a17a101b9fe8c9.res"]
+
+[params]
+
+is_main_file=false
+compress=true

@@ -1,0 +1,7 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://c0ifn6jgsmbgv"]
+
+[ext_resource type="FontFile" uid="uid://dfitej1jnh0pr" path="res://fonts/TrashHand.TTF" id="1_0xmj3"]
+
+[resource]
+default_font = ExtResource("1_0xmj3")
+default_font_size = 50
