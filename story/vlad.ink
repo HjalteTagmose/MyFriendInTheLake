@@ -1,5 +1,4 @@
 VAR gained_trust = false
-test
 
 -> intro
 
@@ -30,10 +29,10 @@ What are you talking about?
 === frank ===
 {
 - gained_trust:
-    He delivered to me before you
-    I guess he got out of the game 
-    Always seemed like a softy to me anyway
+He delivered to me before you
+I guess he got out of the game 
+Always seemed like a softy to me anyway
 - else:
-    I don't know who that is
+I don't know who that is
 }
 -> start

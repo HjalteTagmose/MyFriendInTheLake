@@ -17,6 +17,6 @@ public partial class Item : Button
     public void OnPressed()
 	{
 		GD.Print(Text);
-		DialogueSystem.Instance.PickOption(Text);
+		StoryController.Instance.PickOption(Text);
 	}
 }

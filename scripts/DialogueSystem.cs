@@ -5,26 +5,22 @@ using System;
 
 public partial class DialogueSystem : Node
 { 
-    [Export] private InkStory story;
-
 	public static DialogueSystem Instance;
-    public bool WaitingForChoice => story.CanContinue;
+    public override void _EnterTree() => Instance = this;
 
-    public override void _EnterTree()
-	{
-		Instance = this;
-		GD.Print("_EnterTree");
-	}
+    [Export] private InkStory story;
+    public bool WaitingForChoice => story.CanContinue;
 
 	public bool TryGetNextLine(out string line)
 	{
+		line = "";
 		if (!story.CanContinue)
-		{
-			line = "";
 			return false;
-		}
 
 		line = story.Continue();
+		if (string.IsNullOrWhiteSpace(line))
+			return TryGetNextLine(out line);
+
 		return true;
 	}
 

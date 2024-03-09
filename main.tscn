@@ -1,13 +1,14 @@
-[gd_scene load_steps=14 format=3 uid="uid://roxthgw71bi6"]
+[gd_scene load_steps=15 format=3 uid="uid://roxthgw71bi6"]
 
 [ext_resource type="Theme" uid="uid://c0ifn6jgsmbgv" path="res://theme.tres" id="1_qtflq"]
 [ext_resource type="PackedScene" uid="uid://dt6k7240wisat" path="res://item.tscn" id="1_tvywn"]
 [ext_resource type="Texture2D" uid="uid://cxc3ck2jjakoh" path="res://sprites/vlad.png" id="2_4o28k"]
 [ext_resource type="Texture2D" uid="uid://i7elmh3l0wcb" path="res://sprites/speechbubble-box.png" id="2_hb4qi"]
 [ext_resource type="Texture2D" uid="uid://dwhumg3calvf2" path="res://sprites/speechbubble-tail.png" id="3_tgmxr"]
-[ext_resource type="Script" path="res://StoryController.cs" id="3_tq3fv"]
-[ext_resource type="Script" path="res://DialogueSystem.cs" id="6_1my5n"]
+[ext_resource type="Script" path="res://scripts/StoryController.cs" id="3_tq3fv"]
+[ext_resource type="Script" path="res://scripts/DialogueSystem.cs" id="6_1my5n"]
 [ext_resource type="Resource" uid="uid://d0uoly6i1ad6u" path="res://story/vlad.ink" id="7_noj6d"]
+[ext_resource type="Script" path="res://scripts/SpeechBubble.cs" id="7_obdtd"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lilpc"]
 bg_color = Color(1, 1, 1, 1)
@@ -30,8 +31,9 @@ bg_color = Color(0.831373, 0.831373, 0.831373, 1)
 script = ExtResource("6_1my5n")
 story = ExtResource("7_noj6d")
 
-[node name="StoryController" type="Node" parent="."]
+[node name="StoryController" type="Node" parent="." node_paths=PackedStringArray("npcSpeechBubble")]
 script = ExtResource("3_tq3fv")
+npcSpeechBubble = NodePath("../Control/Story/SpeechBubble")
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 3
@@ -126,6 +128,7 @@ grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.8, 0.8)
 theme_override_styles/panel = SubResource("StyleBoxTexture_x15g6")
+script = ExtResource("7_obdtd")
 
 [node name="Tail" type="Panel" parent="Control/Story/SpeechBubble"]
 layout_mode = 1
@@ -151,7 +154,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_qtflq")
 theme_override_font_sizes/font_size = 60
-text = "hey man, what you need?"
+text = "text"
 horizontal_alignment = 1
 vertical_alignment = 1
 
