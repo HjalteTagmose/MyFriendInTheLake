@@ -4,8 +4,17 @@ using Ink.Parsed;
 using System;
 
 public partial class DialogueSystem : Node
-{
+{ 
     [Export] private InkStory story;
+
+	public static DialogueSystem Instance;
+    public bool WaitingForChoice => story.CanContinue;
+
+    public override void _EnterTree()
+	{
+		Instance = this;
+		GD.Print("_EnterTree");
+	}
 
 	public bool TryGetNextLine(out string line)
 	{

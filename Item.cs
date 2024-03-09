@@ -8,8 +8,15 @@ public partial class Item : Button
 		Pressed += OnPressed;
 	}
 
-	public void OnPressed()
+    public override void _Process(double delta)
+    {
+        bool canPick = DialogueSystem.Instance.WaitingForChoice;
+		Disabled = canPick;
+    }
+
+    public void OnPressed()
 	{
 		GD.Print(Text);
+		DialogueSystem.Instance.PickOption(Text);
 	}
 }
