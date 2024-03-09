@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://roxthgw71bi6"]
+[gd_scene load_steps=16 format=3 uid="uid://roxthgw71bi6"]
 
 [ext_resource type="Theme" uid="uid://c0ifn6jgsmbgv" path="res://theme.tres" id="1_qtflq"]
 [ext_resource type="PackedScene" uid="uid://dt6k7240wisat" path="res://item.tscn" id="1_tvywn"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://i7elmh3l0wcb" path="res://sprites/speechbubble-box.png" id="2_hb4qi"]
 [ext_resource type="Texture2D" uid="uid://dwhumg3calvf2" path="res://sprites/speechbubble-tail.png" id="3_tgmxr"]
 [ext_resource type="Script" path="res://scripts/StoryController.cs" id="3_tq3fv"]
+[ext_resource type="Script" path="res://scripts/Inventory.cs" id="4_nuyx7"]
 [ext_resource type="Script" path="res://scripts/DialogueSystem.cs" id="6_1my5n"]
 [ext_resource type="Resource" uid="uid://d0uoly6i1ad6u" path="res://story/vlad.ink" id="7_noj6d"]
 [ext_resource type="Script" path="res://scripts/SpeechBubble.cs" id="7_obdtd"]
@@ -54,6 +55,7 @@ anchor_right = 0.5
 anchor_bottom = 1.0
 grow_vertical = 2
 size_flags_horizontal = 3
+script = ExtResource("4_nuyx7")
 
 [node name="Button" parent="Control/Inventory" instance=ExtResource("1_tvywn")]
 layout_mode = 0

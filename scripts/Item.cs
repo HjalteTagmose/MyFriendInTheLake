@@ -19,4 +19,10 @@ public partial class Item : Button
 		GD.Print(Text);
 		StoryController.Instance.PickOption(Text);
 	}
+
+    public override Variant _GetDragData(Vector2 atPosition)
+    {
+		GD.Print("drag");
+        return this;
+    }
 }
