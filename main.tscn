@@ -1,16 +1,24 @@
-[gd_scene load_steps=6 format=3 uid="uid://roxthgw71bi6"]
+[gd_scene load_steps=10 format=3 uid="uid://roxthgw71bi6"]
 
 [ext_resource type="Theme" uid="uid://c0ifn6jgsmbgv" path="res://theme.tres" id="1_qtflq"]
+[ext_resource type="Texture2D" uid="uid://cxc3ck2jjakoh" path="res://sprites/vlad.png" id="2_4o28k"]
+[ext_resource type="Texture2D" uid="uid://i7elmh3l0wcb" path="res://sprites/speechbubble-box.png" id="2_hb4qi"]
+[ext_resource type="Texture2D" uid="uid://dwhumg3calvf2" path="res://sprites/speechbubble-tail.png" id="3_tgmxr"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lilpc"]
 bg_color = Color(1, 1, 1, 1)
 
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_tsonf"]
+texture = ExtResource("2_4o28k")
+
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_x15g6"]
+texture = ExtResource("2_hb4qi")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ges4v"]
+texture = ExtResource("3_tgmxr")
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_icyhu"]
 bg_color = Color(0.831373, 0.831373, 0.831373, 1)
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_tsonf"]
 
 [node name="main" type="Node2D"]
 
@@ -33,15 +41,6 @@ anchor_right = 0.5
 anchor_bottom = 1.0
 grow_vertical = 2
 size_flags_horizontal = 3
-
-[node name="GridContainer" type="GridContainer" parent="Control/Inventory"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-columns = 2
 
 [node name="Button" type="Button" parent="Control/Inventory"]
 custom_minimum_size = Vector2(200, 100)
@@ -93,6 +92,22 @@ grow_vertical = 2
 size_flags_horizontal = 3
 theme_override_styles/panel = SubResource("StyleBoxFlat_lilpc")
 
+[node name="Character" type="Panel" parent="Control/Story"]
+custom_minimum_size = Vector2(0, 300)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 190.0
+offset_top = 297.0
+offset_right = 136.0
+offset_bottom = 167.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.705, 0.705)
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxTexture_tsonf")
+
 [node name="SpeechBubble" type="Panel" parent="Control/Story"]
 layout_mode = 1
 anchors_preset = 8
@@ -100,15 +115,31 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -310.0
-offset_top = -328.0
-offset_right = 338.0
-offset_bottom = -219.0
+offset_left = -444.0
+offset_top = -423.0
+offset_right = 439.0
+offset_bottom = -263.0
 grow_horizontal = 2
 grow_vertical = 2
+scale = Vector2(0.8, 0.8)
 theme_override_styles/panel = SubResource("StyleBoxTexture_x15g6")
 
-[node name="Label" type="Label" parent="Control/Story/SpeechBubble"]
+[node name="Tail" type="Panel" parent="Control/Story/SpeechBubble"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -151.5
+offset_top = 71.0
+offset_right = -38.5
+offset_bottom = 184.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_ges4v")
+
+[node name="Text" type="Label" parent="Control/Story/SpeechBubble"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -116,23 +147,25 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_qtflq")
-text = "this is some text!"
+theme_override_font_sizes/font_size = 60
+text = "hey man, what you need?"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Story2" type="Panel" parent="Control/Story"]
-custom_minimum_size = Vector2(0, 300)
+[node name="Actions" type="Panel" parent="Control/Story"]
+custom_minimum_size = Vector2(0, 200)
 layout_mode = 1
 anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_top = -200.0
 grow_horizontal = 2
 grow_vertical = 0
 size_flags_horizontal = 3
 theme_override_styles/panel = SubResource("StyleBoxFlat_icyhu")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Control/Story/Story2"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/Story/Actions"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -141,37 +174,26 @@ grow_horizontal = 2
 grow_vertical = 2
 alignment = 1
 
-[node name="Button" type="Button" parent="Control/Story/Story2/HBoxContainer"]
-custom_minimum_size = Vector2(300, 200)
+[node name="Button" type="Button" parent="Control/Story/Actions/HBoxContainer"]
+custom_minimum_size = Vector2(250, 180)
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0
 theme = ExtResource("1_qtflq")
 text = "ask about"
 
-[node name="Button2" type="Button" parent="Control/Story/Story2/HBoxContainer"]
-custom_minimum_size = Vector2(300, 200)
+[node name="Button2" type="Button" parent="Control/Story/Actions/HBoxContainer"]
+custom_minimum_size = Vector2(250, 180)
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0
 theme = ExtResource("1_qtflq")
 text = "think about"
 
-[node name="Button3" type="Button" parent="Control/Story/Story2/HBoxContainer"]
-custom_minimum_size = Vector2(300, 200)
+[node name="Button3" type="Button" parent="Control/Story/Actions/HBoxContainer"]
+custom_minimum_size = Vector2(250, 180)
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0
 theme = ExtResource("1_qtflq")
 text = "go to"
-
-[node name="Character" type="Panel" parent="Control/Story"]
-custom_minimum_size = Vector2(0, 300)
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_horizontal = 3
-theme_override_styles/panel = SubResource("StyleBoxTexture_tsonf")
