@@ -8,7 +8,6 @@ public partial class Item : Button
 
 	public override void _Ready()
 	{
-		Pressed += OnPressed;
 		lastPos = Position;
 	}
 
@@ -19,12 +18,23 @@ public partial class Item : Button
 		HandleDrag();
     }
 
-    public void OnPressed()
+    public void AskAbout()
+	{
+		GD.Print(Text);
+		StoryController.Instance.PickOption(Text);
+	}
+    public void ThinkAbout()
+	{
+		GD.Print(Text);
+		StoryController.Instance.PickOption(Text);
+	}
+	public void GoTo()
 	{
 		GD.Print(Text);
 		StoryController.Instance.PickOption(Text);
 	}
 
+	#region Drag And Drop
 	public void HandleDrag()
 	{
 		if (!IsDragging)
@@ -70,4 +80,5 @@ public partial class Item : Button
 		}
 		base._Notification(what);
 	}
+	#endregion
 }

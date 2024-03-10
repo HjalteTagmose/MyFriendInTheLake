@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://cs8ncvascl6g"]
+
+[ext_resource type="Script" path="res://scripts/StoryAction.cs" id="1_bs4ig"]
+[ext_resource type="Theme" uid="uid://c0ifn6jgsmbgv" path="res://theme.tres" id="1_h31ij"]
+
+[node name="Action" type="Panel"]
+custom_minimum_size = Vector2(250, 180)
+size_flags_horizontal = 4
+size_flags_vertical = 4
+script = ExtResource("1_bs4ig")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_h31ij")
+text = "Ask About"
+horizontal_alignment = 1
+vertical_alignment = 1

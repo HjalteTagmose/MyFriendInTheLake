@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://roxthgw71bi6"]
+[gd_scene load_steps=17 format=3 uid="uid://roxthgw71bi6"]
 
 [ext_resource type="Theme" uid="uid://c0ifn6jgsmbgv" path="res://theme.tres" id="1_qtflq"]
 [ext_resource type="PackedScene" uid="uid://dt6k7240wisat" path="res://item.tscn" id="1_tvywn"]
@@ -10,6 +10,7 @@
 [ext_resource type="Script" path="res://scripts/DialogueSystem.cs" id="6_1my5n"]
 [ext_resource type="Resource" uid="uid://d0uoly6i1ad6u" path="res://story/vlad.ink" id="7_noj6d"]
 [ext_resource type="Script" path="res://scripts/SpeechBubble.cs" id="7_obdtd"]
+[ext_resource type="PackedScene" uid="uid://cs8ncvascl6g" path="res://action.tscn" id="9_jr1t5"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lilpc"]
 bg_color = Color(1, 1, 1, 1)
@@ -141,29 +142,16 @@ grow_horizontal = 2
 grow_vertical = 2
 alignment = 1
 
-[node name="Button" type="Button" parent="Control/Story/Actions/HBoxContainer"]
-custom_minimum_size = Vector2(250, 180)
+[node name="AskAbout" parent="Control/Story/Actions/HBoxContainer" instance=ExtResource("9_jr1t5")]
 layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 0
-theme = ExtResource("1_qtflq")
-text = "ask about"
 
-[node name="Button2" type="Button" parent="Control/Story/Actions/HBoxContainer"]
-custom_minimum_size = Vector2(250, 180)
+[node name="ThinkAbout" parent="Control/Story/Actions/HBoxContainer" instance=ExtResource("9_jr1t5")]
 layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 0
-theme = ExtResource("1_qtflq")
-text = "think about"
+type = 1
 
-[node name="Button3" type="Button" parent="Control/Story/Actions/HBoxContainer"]
-custom_minimum_size = Vector2(250, 180)
+[node name="GoTo" parent="Control/Story/Actions/HBoxContainer" instance=ExtResource("9_jr1t5")]
 layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 0
-theme = ExtResource("1_qtflq")
-text = "go to"
+type = 2
 
 [node name="Inventory" type="Panel" parent="Control"]
 layout_mode = 1
