@@ -3,9 +3,12 @@ using System;
 
 public partial class Item : Button
 {
-	[Export]
-	public string Description { get; private set; } = "test description";
-	public bool IsDragging { get; set; }
+	[Export] public bool CanLeave { get; private set; }
+	[Export(PropertyHint.MultilineText)] public string Thought { get; private set; } = "test thought";
+	[Export(PropertyHint.MultilineText)] public string Question { get; private set; } = "test question";
+	[Export(PropertyHint.MultilineText)] public string Leave { get; private set; } = "test leave";
+
+	private bool IsDragging;
 	private Vector2 lastPos;
 
 	public override void _Ready()
@@ -22,18 +25,16 @@ public partial class Item : Button
 
     public void AskAbout()
 	{
-		GD.Print(Text);
+		GD.Print(Question);
 		StoryController.Instance.PickOption(Text);
 	}
     public void ThinkAbout()
 	{
-		GD.Print(Text);
-		StoryController.Instance.PickOption(Text);
+		GD.Print(Thought);
 	}
 	public void GoTo()
 	{
-		GD.Print(Text);
-		StoryController.Instance.PickOption(Text);
+		GD.Print(Leave);
 	}
 
 	#region Drag And Drop

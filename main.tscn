@@ -171,3 +171,6 @@ offset_top = 350.0
 offset_right = 719.0
 offset_bottom = 450.0
 text = "cold"
+Thought = "It's cold here!"
+Question = "Pretty cold here, don't you think?"
+Leave = ""
