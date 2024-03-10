@@ -2,8 +2,8 @@ using Godot;
 
 public partial class StoryAction : Panel
 {
-	[Export]
-	public ActionType type;
+	[Export] private ActionType type;
+	[Export] private SpeechBubble preview;
 	private Label label;
 
 	public override void _Ready()
@@ -20,7 +20,9 @@ public partial class StoryAction : Panel
 
 	public override bool _CanDropData(Vector2 atPosition, Variant data)
 	{
-		GD.Print("on action");
+		var item = data.As<Item>();
+		preview.Visible = true;
+		preview.Preview((BubbleType)(type+1), item.Description);
 		return true;
 	}
 
@@ -29,6 +31,7 @@ public partial class StoryAction : Panel
 		GD.Print("do action");
 		var item = data.As<Item>();
 		item.CancelDrag();
+		preview.Visible = false;
 		switch (type)
 		{
 			case ActionType.ASKABOUT: 	item.AskAbout(); 	break;

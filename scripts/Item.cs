@@ -3,7 +3,9 @@ using System;
 
 public partial class Item : Button
 {
-	public bool IsDragging { get; set; } 
+	[Export]
+	public string Description { get; private set; } = "test description";
+	public bool IsDragging { get; set; }
 	private Vector2 lastPos;
 
 	public override void _Ready()

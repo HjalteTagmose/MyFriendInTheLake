@@ -1,15 +1,12 @@
-[gd_scene load_steps=17 format=3 uid="uid://roxthgw71bi6"]
+[gd_scene load_steps=12 format=3 uid="uid://roxthgw71bi6"]
 
-[ext_resource type="Theme" uid="uid://c0ifn6jgsmbgv" path="res://theme.tres" id="1_qtflq"]
 [ext_resource type="PackedScene" uid="uid://dt6k7240wisat" path="res://item.tscn" id="1_tvywn"]
 [ext_resource type="Texture2D" uid="uid://cxc3ck2jjakoh" path="res://sprites/vlad.png" id="2_4o28k"]
-[ext_resource type="Texture2D" uid="uid://i7elmh3l0wcb" path="res://sprites/speechbubble-box.png" id="2_hb4qi"]
-[ext_resource type="Texture2D" uid="uid://dwhumg3calvf2" path="res://sprites/speechbubble-tail.png" id="3_tgmxr"]
 [ext_resource type="Script" path="res://scripts/StoryController.cs" id="3_tq3fv"]
 [ext_resource type="Script" path="res://scripts/Inventory.cs" id="4_nuyx7"]
+[ext_resource type="PackedScene" uid="uid://dhs03bddwmabh" path="res://speech_bubble.tscn" id="5_tao48"]
 [ext_resource type="Script" path="res://scripts/DialogueSystem.cs" id="6_1my5n"]
 [ext_resource type="Resource" uid="uid://d0uoly6i1ad6u" path="res://story/vlad.ink" id="7_noj6d"]
-[ext_resource type="Script" path="res://scripts/SpeechBubble.cs" id="7_obdtd"]
 [ext_resource type="PackedScene" uid="uid://cs8ncvascl6g" path="res://action.tscn" id="9_jr1t5"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lilpc"]
@@ -17,12 +14,6 @@ bg_color = Color(1, 1, 1, 1)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_tsonf"]
 texture = ExtResource("2_4o28k")
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_x15g6"]
-texture = ExtResource("2_hb4qi")
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ges4v"]
-texture = ExtResource("3_tgmxr")
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_icyhu"]
 bg_color = Color(0.831373, 0.831373, 0.831373, 1)
@@ -75,51 +66,35 @@ scale = Vector2(0.705, 0.705)
 size_flags_horizontal = 3
 theme_override_styles/panel = SubResource("StyleBoxTexture_tsonf")
 
-[node name="SpeechBubble" type="Panel" parent="Control/Story"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -538.0
-offset_top = -307.0
-offset_right = 345.0
-offset_bottom = -147.0
-grow_horizontal = 2
-grow_vertical = 2
-scale = Vector2(0.8, 0.8)
-pivot_offset = Vector2(438.75, 135)
-theme_override_styles/panel = SubResource("StyleBoxTexture_x15g6")
-script = ExtResource("7_obdtd")
+[node name="PreviewBubble" parent="Control/Story" instance=ExtResource("5_tao48")]
+visible = false
+layout_mode = 0
+anchors_preset = 0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 56.75
+offset_top = 219.0
+offset_right = 939.75
+offset_bottom = 379.0
+grow_horizontal = 1
+grow_vertical = 1
+type = 1
 
-[node name="Tail" type="Panel" parent="Control/Story/SpeechBubble"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -151.5
-offset_top = 71.0
-offset_right = -38.5
-offset_bottom = 184.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxTexture_ges4v")
-
-[node name="Text" type="Label" parent="Control/Story/SpeechBubble"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme = ExtResource("1_qtflq")
-theme_override_font_sizes/font_size = 60
-text = "text"
-horizontal_alignment = 1
-vertical_alignment = 1
+[node name="SpeechBubble" parent="Control/Story" instance=ExtResource("5_tao48")]
+layout_mode = 0
+anchors_preset = 0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = -53.0
+offset_top = 222.0
+offset_right = 830.0
+offset_bottom = 382.0
+grow_horizontal = 1
+grow_vertical = 1
 
 [node name="Actions" type="Panel" parent="Control/Story"]
 custom_minimum_size = Vector2(0, 200)
@@ -142,16 +117,19 @@ grow_horizontal = 2
 grow_vertical = 2
 alignment = 1
 
-[node name="AskAbout" parent="Control/Story/Actions/HBoxContainer" instance=ExtResource("9_jr1t5")]
+[node name="AskAbout" parent="Control/Story/Actions/HBoxContainer" node_paths=PackedStringArray("preview") instance=ExtResource("9_jr1t5")]
 layout_mode = 2
+preview = NodePath("../../../PreviewBubble")
 
-[node name="ThinkAbout" parent="Control/Story/Actions/HBoxContainer" instance=ExtResource("9_jr1t5")]
+[node name="ThinkAbout" parent="Control/Story/Actions/HBoxContainer" node_paths=PackedStringArray("preview") instance=ExtResource("9_jr1t5")]
 layout_mode = 2
 type = 1
+preview = NodePath("../../../PreviewBubble")
 
-[node name="GoTo" parent="Control/Story/Actions/HBoxContainer" instance=ExtResource("9_jr1t5")]
+[node name="GoTo" parent="Control/Story/Actions/HBoxContainer" node_paths=PackedStringArray("preview") instance=ExtResource("9_jr1t5")]
 layout_mode = 2
 type = 2
+preview = NodePath("../../../PreviewBubble")
 
 [node name="Inventory" type="Panel" parent="Control"]
 layout_mode = 1
