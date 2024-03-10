@@ -28,9 +28,13 @@ public partial class StoryController : Node
 	{
 		bool hasLine = DialogueSystem.Instance.TryGetNextLine(out string line);
 		if (!hasLine)
+		{
+			npcSpeechBubble.Hide();
 			return;
+		}
 		
 		GD.Print(line);
+		npcSpeechBubble.Show();
 		npcSpeechBubble.Say(line);
 	}
 
