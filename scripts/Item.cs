@@ -3,7 +3,8 @@ using Godot;
 public partial class Item : Draggable
 {
 	public static Item draggedItem = null;
-
+	
+	[Export] private float scaleWhenDragged = 1f;
 	[Export] public bool CanLeave { get; private set; }
 	[Export] public string Option { get; private set; } = "unknown";
 	[Export] public string Question { get; private set; } = "test question";
@@ -30,11 +31,13 @@ public partial class Item : Draggable
 	{
 		base.StartDrag();
 		draggedItem = this;
+		Scale = Vector2.One * scaleWhenDragged;
 	}
 
 	public override void StopDrag()
 	{
 		base.StopDrag();
 		draggedItem = null;
+		Scale = Vector2.One;
 	}
 }

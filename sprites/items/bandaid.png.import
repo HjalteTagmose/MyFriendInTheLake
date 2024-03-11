@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cxc3ck2jjakoh"
-path="res://.godot/imported/vlad.png-73c3c4f66087ecada6f5909e8f802866.ctex"
+uid="uid://des22dotgrjvm"
+path="res://.godot/imported/bandaid.png-98e20716c623bad0ff2d1d0e47b20569.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/vlad.png"
-dest_files=["res://.godot/imported/vlad.png-73c3c4f66087ecada6f5909e8f802866.ctex"]
+source_file="res://sprites/items/bandaid.png"
+dest_files=["res://.godot/imported/bandaid.png-98e20716c623bad0ff2d1d0e47b20569.ctex"]
 
 [params]
 

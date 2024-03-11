@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bojpiai20mw14"
-path="res://.godot/imported/dots.png-5d56fc0631795f08c7f7c72507e372ad.ctex"
+uid="uid://cxc3ck2jjakoh"
+path="res://.godot/imported/vlad.png-77bf6a02d91d53b9cbf811d9aa30fe97.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/dots.png"
-dest_files=["res://.godot/imported/dots.png-5d56fc0631795f08c7f7c72507e372ad.ctex"]
+source_file="res://sprites/characters/vlad.png"
+dest_files=["res://.godot/imported/vlad.png-77bf6a02d91d53b9cbf811d9aa30fe97.ctex"]
 
 [params]
 

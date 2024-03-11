@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://5wnlsftxwwwa"
-path="res://.godot/imported/line.png-027eb2cbaa538f0e85a43da61cb2f4e5.ctex"
+uid="uid://b0m0mp2e3xme4"
+path="res://.godot/imported/drugs.png-e9e2422fa6c13dbe913c7e487062404c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/line.png"
-dest_files=["res://.godot/imported/line.png-027eb2cbaa538f0e85a43da61cb2f4e5.ctex"]
+source_file="res://sprites/items/drugs.png"
+dest_files=["res://.godot/imported/drugs.png-e9e2422fa6c13dbe913c7e487062404c.ctex"]
 
 [params]
 

@@ -1,38 +1,36 @@
-VAR gained_trust = false
+VAR delivered_drugs = false
 
--> intro
-
-=== intro ===
+=== vlad_intro ===
 Hey man, what you need?
--> start
+-> vlad_start
 
-=== start ===
- + [unknown] -> unknown
- + [drugs] -> drugs
- + [cold] -> cold
- + [frank] -> frank
+=== vlad_start ===
+ + [unknown] -> vlad_unknown
+ + [drugs] -> vlad_drugs
+ + [cold] -> vlad_cold
+ + [frank] -> vlad_frank
  
-=== cold ===
+=== vlad_cold ===
 I got stuff, that'll make you feel like you're on the beach.
--> start
+-> vlad_start
 
-=== drugs ===
-~gained_trust = true
+=== vlad_drugs ===
+~delivered_drugs = true
 You're the new delivery boy then?
 I guess Frank couldn't hack it  
--> start
+-> vlad_start
 
-=== unknown ===
+=== vlad_unknown ===
 What are you talking about?
--> start
+-> vlad_start
 
-=== frank ===
+=== vlad_frank ===
 {
-- gained_trust:
+- delivered_drugs:
 He delivered to me before you
 I guess he got out of the game 
 Always seemed like a softy to me anyway
 - else:
 I don't know who that is
 }
--> start
+-> vlad_start
