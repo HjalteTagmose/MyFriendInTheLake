@@ -107,6 +107,11 @@ Question = "Pretty cold here, don't you think?"
 Thought = "It's cold here!"
 Leave = ""
 
+[node name="Control" type="Control" parent="UI/Inventory/Background"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
 [node name="Story" type="Panel" parent="UI"]
 layout_mode = 1
 anchors_preset = -1
