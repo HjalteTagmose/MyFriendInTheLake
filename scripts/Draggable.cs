@@ -30,11 +30,10 @@ public abstract partial class Draggable : Control
 			return;
 
 		Position = GetViewport().GetMousePosition() + (useOffset ? startOffset : -Size / 2f);
-		GD.Print(GetViewport().GetMousePosition());
 		ClampPosition();
 	}
 
-	public void StartDrag()
+	protected virtual void StartDrag()
 	{
 		if (unparentOnDrag)
 		{
@@ -49,7 +48,7 @@ public abstract partial class Draggable : Control
 		lastPos = Position;
 	}
 
-	public void StopDrag()
+	public virtual void StopDrag()
 	{
 		if (unparentOnDrag)
 		{
