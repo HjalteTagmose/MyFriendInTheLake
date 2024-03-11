@@ -2,11 +2,15 @@ using Godot;
 
 public abstract partial class Draggable : Control
 {
+	[Export] private bool unparentOnDrag = true;
+	[Export] private bool resetPosOnCancel = true;
+	[Export] private bool useOffset = false;
+
 	private bool IsDragging;
 	private Vector2 startOffset;
 	private Control uiRoot;
 	private Control parent;
-	private Vector2 lastPos;
+	protected Vector2 lastPos;
 
 	public override void _Ready()
 	{
@@ -25,12 +29,21 @@ public abstract partial class Draggable : Control
 		if (!IsDragging)
 			return;
 
-		Position = GetViewport().GetMousePosition() + startOffset;
+		Position = GetViewport().GetMousePosition() + (useOffset ? startOffset : -Size / 2f);
+		GD.Print(GetViewport().GetMousePosition());
+		ClampPosition();
 	}
 
 	public void StartDrag()
 	{
+		if (unparentOnDrag)
+		{
+			parent.RemoveChild(this);
+			uiRoot.AddChild(this);
+		}
+
 		startOffset = Position - GetViewport().GetMousePosition();
+
 		IsDragging = true;
 		MouseFilter = MouseFilterEnum.Ignore;
 		lastPos = Position;
@@ -38,14 +51,29 @@ public abstract partial class Draggable : Control
 
 	public void StopDrag()
 	{
+		if (unparentOnDrag)
+		{
+			uiRoot.RemoveChild(this);
+			parent.AddChild(this);
+		}
+
 		IsDragging = false;
 		MouseFilter = MouseFilterEnum.Stop;
+
+		Position = GetViewport().GetMousePosition() + startOffset;
+		ClampPosition();
 	}
 
 	public void CancelDrag()
 	{
 		StopDrag();
-		Position = lastPos;
+		if (resetPosOnCancel)
+			Position = lastPos;
+	}
+
+	protected virtual void ClampPosition()
+	{
+
 	}
 
 	public override Variant _GetDragData(Vector2 atPosition)
