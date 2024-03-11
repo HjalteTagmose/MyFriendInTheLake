@@ -4,11 +4,18 @@ public partial class StoryAction : Panel
 {
 	[Export] private ActionType type;
 	[Export] private SpeechBubble preview;
+	private TextureRect textureRect;
 
 	public override void _Ready()
 	{
+		textureRect = GetNode<TextureRect>("Icon");
 	}
-	
+
+	public void SetAlpha(float a)
+	{
+		textureRect.SelfModulate = new Color(1,1,1,a);
+	}
+
 	public override bool _CanDropData(Vector2 atPosition, Variant data)
 	{
 		var item = data.As<Item>();

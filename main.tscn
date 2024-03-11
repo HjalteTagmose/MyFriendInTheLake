@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://roxthgw71bi6"]
+[gd_scene load_steps=29 format=3 uid="uid://roxthgw71bi6"]
 
 [ext_resource type="PackedScene" uid="uid://dt6k7240wisat" path="res://item.tscn" id="1_tvywn"]
 [ext_resource type="Texture2D" uid="uid://cxc3ck2jjakoh" path="res://sprites/vlad.png" id="2_4o28k"]
@@ -9,9 +9,18 @@
 [ext_resource type="Script" path="res://scripts/InventoryBackground.cs" id="6_gl0b8"]
 [ext_resource type="Resource" uid="uid://d0uoly6i1ad6u" path="res://story/vlad.ink" id="7_noj6d"]
 [ext_resource type="Texture2D" uid="uid://bojpiai20mw14" path="res://sprites/dots.png" id="8_hmrae"]
-[ext_resource type="PackedScene" uid="uid://cs8ncvascl6g" path="res://action.tscn" id="9_jr1t5"]
 [ext_resource type="Script" path="res://ActionsPanel.cs" id="10_bo17g"]
 [ext_resource type="Texture2D" uid="uid://5wnlsftxwwwa" path="res://sprites/line.png" id="10_y5y2k"]
+[ext_resource type="Script" path="res://scripts/StoryAction.cs" id="11_c527t"]
+[ext_resource type="Texture2D" uid="uid://dyexdy4fcocjb" path="res://sprites/actions/ask1.png" id="12_0hljw"]
+[ext_resource type="Texture2D" uid="uid://boehnfg75klxd" path="res://sprites/actions/ask2.png" id="13_nth7k"]
+[ext_resource type="Texture2D" uid="uid://c4o8unjre3g0v" path="res://sprites/actions/think1.png" id="14_xi1kg"]
+[ext_resource type="Texture2D" uid="uid://cajihc52rvcrm" path="res://sprites/actions/think2.png" id="15_pfdu0"]
+[ext_resource type="Texture2D" uid="uid://baw2gyidnubls" path="res://sprites/actions/go1.png" id="16_b137r"]
+[ext_resource type="Texture2D" uid="uid://34irhwhrmw50" path="res://sprites/actions/go2.png" id="17_tgdns"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_a3ces"]
+bg_color = Color(1, 1, 1, 1)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_4b5iu"]
 texture = ExtResource("8_hmrae")
@@ -24,8 +33,30 @@ bg_color = Color(1, 1, 1, 1)
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_tsonf"]
 texture = ExtResource("2_4o28k")
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_icyhu"]
-bg_color = Color(0.831373, 0.831373, 0.831373, 1)
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_uul3d"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wfpu0"]
+
+[sub_resource type="AnimatedTexture" id="AnimatedTexture_53fmy"]
+frames = 2
+frame_0/texture = ExtResource("16_b137r")
+frame_0/duration = 0.3
+frame_1/texture = ExtResource("17_tgdns")
+frame_1/duration = 0.3
+
+[sub_resource type="AnimatedTexture" id="AnimatedTexture_5qavl"]
+frames = 2
+frame_0/texture = ExtResource("14_xi1kg")
+frame_0/duration = 0.3
+frame_1/texture = ExtResource("15_pfdu0")
+frame_1/duration = 0.3
+
+[sub_resource type="AnimatedTexture" id="AnimatedTexture_ck7i7"]
+frames = 2
+frame_0/texture = ExtResource("12_0hljw")
+frame_0/duration = 0.3
+frame_1/texture = ExtResource("13_nth7k")
+frame_1/duration = 0.3
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_jgldo"]
 texture = ExtResource("10_y5y2k")
@@ -59,6 +90,7 @@ anchor_right = 0.5
 anchor_bottom = 1.0
 grow_vertical = 2
 size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_a3ces")
 script = ExtResource("4_nuyx7")
 
 [node name="Background" type="Panel" parent="UI/Inventory"]
@@ -172,35 +204,95 @@ anchors_preset = 10
 anchor_right = 1.0
 grow_horizontal = 2
 size_flags_horizontal = 3
-theme_override_styles/panel = SubResource("StyleBoxFlat_icyhu")
+theme_override_styles/panel = SubResource("StyleBoxEmpty_uul3d")
 script = ExtResource("10_bo17g")
 preview = NodePath("../PreviewBubble")
 
-[node name="Ask" parent="UI/Story/Actions" node_paths=PackedStringArray("preview") instance=ExtResource("9_jr1t5")]
-layout_mode = 2
-offset_left = 101.0
-offset_top = 10.0
-offset_right = 351.0
-offset_bottom = 190.0
-preview = NodePath("../../PreviewBubble")
-
-[node name="Think" parent="UI/Story/Actions" node_paths=PackedStringArray("preview") instance=ExtResource("9_jr1t5")]
-layout_mode = 2
-offset_left = 355.0
-offset_top = 10.0
-offset_right = 605.0
-offset_bottom = 190.0
-type = 1
-preview = NodePath("../../PreviewBubble")
-
-[node name="Go" parent="UI/Story/Actions" node_paths=PackedStringArray("preview") instance=ExtResource("9_jr1t5")]
+[node name="Go" type="Panel" parent="UI/Story/Actions" node_paths=PackedStringArray("preview")]
+custom_minimum_size = Vector2(250, 180)
 layout_mode = 2
 offset_left = 609.0
 offset_top = 10.0
 offset_right = 859.0
 offset_bottom = 190.0
+pivot_offset = Vector2(125, 90)
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxEmpty_wfpu0")
+script = ExtResource("11_c527t")
 type = 2
 preview = NodePath("../../PreviewBubble")
+
+[node name="Icon" type="TextureRect" parent="UI/Story/Actions/Go"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 50.0
+offset_bottom = 70.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = SubResource("AnimatedTexture_53fmy")
+expand_mode = 3
+stretch_mode = 4
+
+[node name="Think" type="Panel" parent="UI/Story/Actions" node_paths=PackedStringArray("preview")]
+custom_minimum_size = Vector2(250, 180)
+layout_mode = 2
+offset_left = 355.0
+offset_top = 10.0
+offset_right = 605.0
+offset_bottom = 190.0
+pivot_offset = Vector2(125, 90)
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxEmpty_wfpu0")
+script = ExtResource("11_c527t")
+type = 1
+preview = NodePath("../../PreviewBubble")
+
+[node name="Icon" type="TextureRect" parent="UI/Story/Actions/Think"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 50.0
+offset_bottom = 70.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = SubResource("AnimatedTexture_5qavl")
+expand_mode = 3
+stretch_mode = 4
+
+[node name="Ask" type="Panel" parent="UI/Story/Actions" node_paths=PackedStringArray("preview")]
+custom_minimum_size = Vector2(250, 180)
+layout_mode = 2
+offset_left = 101.0
+offset_top = 10.0
+offset_right = 351.0
+offset_bottom = 190.0
+pivot_offset = Vector2(125, 90)
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxEmpty_wfpu0")
+script = ExtResource("11_c527t")
+preview = NodePath("../../PreviewBubble")
+
+[node name="Icon" type="TextureRect" parent="UI/Story/Actions/Ask"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 50.0
+offset_bottom = 70.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = SubResource("AnimatedTexture_ck7i7")
+expand_mode = 3
+stretch_mode = 4
 
 [node name="Divider" type="Panel" parent="UI"]
 custom_minimum_size = Vector2(20, 1080)

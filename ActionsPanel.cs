@@ -1,5 +1,4 @@
 using Godot;
-using System;
 
 public partial class ActionsPanel : Panel
 {
@@ -21,6 +20,24 @@ public partial class ActionsPanel : Panel
 
 	private void UpdatePreview()
 	{
+		if (Item.draggedItem == null) 
+		{
+			ask.Hide();
+			think.Hide();
+			go.Hide();
+			preview.Hide();
+		}
+		else 
+		{
+			ask.Show();
+			think.Show();
+			go.Show();
+			if (!Item.draggedItem.CanLeave)
+				go.SetAlpha(.5f);
+							
+			ask.Scale = think.Scale = go.Scale = Vector2.One;
+		}
+
 		if (!preview.Visible)
 			return;
 
@@ -32,13 +49,17 @@ public partial class ActionsPanel : Panel
 		}
 
 		var globalMouse = GetGlobalMousePosition();
-		bool containsMouse = 
-			ask.GetGlobalRect().HasPoint(globalMouse) ||
-			think.GetGlobalRect().HasPoint(globalMouse) ||
-			go.GetGlobalRect().HasPoint(globalMouse); 
+		bool askHasMouse = ask.GetGlobalRect().HasPoint(globalMouse);
+		bool thinkHasMouse = think.GetGlobalRect().HasPoint(globalMouse);
+		bool goHasMouse = go.GetGlobalRect().HasPoint(globalMouse) && Item.draggedItem.CanLeave; 
+		bool containsMouse = askHasMouse || thinkHasMouse || goHasMouse;
 
 		if (!containsMouse)
 			preview.Hide();
+
+		ask.Scale	= Vector2.One * (askHasMouse ?  1.25f : 1f);
+		think.Scale = Vector2.One * (thinkHasMouse ?  1.25f : 1f);
+		go.Scale  	= Vector2.One * (goHasMouse ?  1.25f : 1f);
 	}
 
 }
