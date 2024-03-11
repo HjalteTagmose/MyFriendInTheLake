@@ -1,12 +1,29 @@
-[gd_scene load_steps=6 format=3 uid="uid://dhs03bddwmabh"]
+[gd_scene load_steps=11 format=3 uid="uid://dhs03bddwmabh"]
 
 [ext_resource type="StyleBox" uid="uid://bkiemhhaaqghn" path="res://speech.tres" id="1_6x1y1"]
 [ext_resource type="Script" path="res://scripts/SpeechBubble.cs" id="2_ug814"]
-[ext_resource type="Texture2D" uid="uid://dwhumg3calvf2" path="res://sprites/speechbubble-tail.png" id="3_x7mjo"]
 [ext_resource type="Theme" uid="uid://c0ifn6jgsmbgv" path="res://theme.tres" id="4_edvoq"]
+[ext_resource type="Texture2D" uid="uid://fdn40br474xf" path="res://sprites/speechbubble-box/tail.png" id="4_u8xur"]
+[ext_resource type="Texture2D" uid="uid://b2vdisk0k5vxc" path="res://sprites/speechbubble-box/tail-alt.png" id="5_6wvs3"]
+[ext_resource type="Texture2D" uid="uid://cuolaajpdoqbo" path="res://sprites/speechbubble-box/speechbubble-alt.png" id="5_bpxcr"]
+[ext_resource type="Texture2D" uid="uid://ceurx4kj5v3hp" path="res://sprites/speechbubble-box/speechbubble-box.png" id="6_b2x73"]
+
+[sub_resource type="AnimatedTexture" id="AnimatedTexture_xoi0r"]
+frames = 2
+frame_0/texture = ExtResource("5_bpxcr")
+frame_0/duration = 0.3
+frame_1/texture = ExtResource("6_b2x73")
+frame_1/duration = 0.3
+
+[sub_resource type="AnimatedTexture" id="AnimatedTexture_04ypj"]
+frames = 2
+frame_0/texture = ExtResource("4_u8xur")
+frame_0/duration = 0.3
+frame_1/texture = ExtResource("5_6wvs3")
+frame_1/duration = 0.3
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ges4v"]
-texture = ExtResource("3_x7mjo")
+texture = ExtResource("4_u8xur")
 
 [node name="SpeechBubble" type="Control"]
 layout_mode = 3
@@ -25,32 +42,21 @@ scale = Vector2(0.8, 0.8)
 pivot_offset = Vector2(438.75, 135)
 script = ExtResource("2_ug814")
 
-[node name="Speech" type="Panel" parent="."]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_styles/panel = ExtResource("1_6x1y1")
+[node name="Speech" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 899.0
+offset_bottom = 163.0
+texture = SubResource("AnimatedTexture_xoi0r")
 
-[node name="Tail" type="Panel" parent="Speech"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -151.5
-offset_top = 71.0
-offset_right = -38.5
-offset_bottom = 184.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxTexture_ges4v")
+[node name="Tail" type="TextureRect" parent="Speech"]
+layout_mode = 0
+offset_left = 236.562
+offset_top = 143.75
+offset_right = 374.563
+offset_bottom = 266.75
+texture = SubResource("AnimatedTexture_04ypj")
 
 [node name="Preview" type="Panel" parent="."]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -67,9 +73,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -256.188
-offset_top = 72.5
+offset_top = 65.0
 offset_right = -143.188
-offset_bottom = 185.5
+offset_bottom = 178.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(-1, 1)

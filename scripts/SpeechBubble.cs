@@ -4,13 +4,14 @@ using Godot;
 public partial class SpeechBubble : Control
 {
 	[Export] private BubbleType type;
-	private Panel speech, preview, thought, box;
+	private TextureRect speech;
+	private Panel preview, thought, box;
 
 	private Label label;
 
 	public override void _Ready()
 	{
-		speech = GetNode("Speech") as Panel;
+		speech = GetNode("Speech") as TextureRect;
 		preview = GetNode("Preview") as Panel;
 		thought = GetNode("Thought") as Panel;
 		box = GetNode("Box") as Panel;

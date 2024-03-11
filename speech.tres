@@ -1,6 +1,6 @@
 [gd_resource type="StyleBoxTexture" load_steps=2 format=3 uid="uid://bkiemhhaaqghn"]
 
-[ext_resource type="Texture2D" uid="uid://i7elmh3l0wcb" path="res://sprites/speechbubble-box.png" id="1_d64ee"]
+[ext_resource type="Texture2D" uid="uid://ceurx4kj5v3hp" path="res://sprites/speechbubble-box/speechbubble-box.png" id="1_xelva"]
 
 [resource]
-texture = ExtResource("1_d64ee")
+texture = ExtResource("1_xelva")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://roxthgw71bi6"]
+[gd_scene load_steps=16 format=3 uid="uid://roxthgw71bi6"]
 
 [ext_resource type="PackedScene" uid="uid://dt6k7240wisat" path="res://item.tscn" id="1_tvywn"]
 [ext_resource type="Texture2D" uid="uid://cxc3ck2jjakoh" path="res://sprites/vlad.png" id="2_4o28k"]
@@ -7,7 +7,14 @@
 [ext_resource type="PackedScene" uid="uid://dhs03bddwmabh" path="res://speech_bubble.tscn" id="5_tao48"]
 [ext_resource type="Script" path="res://scripts/DialogueSystem.cs" id="6_1my5n"]
 [ext_resource type="Resource" uid="uid://d0uoly6i1ad6u" path="res://story/vlad.ink" id="7_noj6d"]
+[ext_resource type="Texture2D" uid="uid://bojpiai20mw14" path="res://sprites/dots.png" id="8_hmrae"]
 [ext_resource type="PackedScene" uid="uid://cs8ncvascl6g" path="res://action.tscn" id="9_jr1t5"]
+[ext_resource type="Texture2D" uid="uid://5wnlsftxwwwa" path="res://sprites/line.png" id="10_y5y2k"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_4b5iu"]
+texture = ExtResource("8_hmrae")
+axis_stretch_horizontal = 2
+axis_stretch_vertical = 2
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lilpc"]
 bg_color = Color(1, 1, 1, 1)
@@ -17,6 +24,9 @@ texture = ExtResource("2_4o28k")
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_icyhu"]
 bg_color = Color(0.831373, 0.831373, 0.831373, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_jgldo"]
+texture = ExtResource("10_y5y2k")
 
 [node name="main" type="Node2D"]
 
@@ -39,6 +49,68 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+
+[node name="Inventory" type="Panel" parent="Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.5
+anchor_bottom = 1.0
+grow_vertical = 2
+size_flags_horizontal = 3
+script = ExtResource("4_nuyx7")
+
+[node name="Background" type="Panel" parent="Control/Inventory"]
+texture_repeat = 2
+custom_minimum_size = Vector2(2048, 2048)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -824.0
+offset_top = -854.0
+offset_right = 1224.0
+offset_bottom = 1194.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_4b5iu")
+
+[node name="Button" parent="Control/Inventory/Background" instance=ExtResource("1_tvywn")]
+layout_mode = 0
+offset_left = 571.0
+offset_top = 1126.0
+offset_right = 771.0
+offset_bottom = 1226.0
+text = "poopy poo!"
+
+[node name="Button2" parent="Control/Inventory/Background" instance=ExtResource("1_tvywn")]
+layout_mode = 0
+offset_left = 549.0
+offset_top = 766.0
+offset_right = 749.0
+offset_bottom = 866.0
+text = "drugs"
+
+[node name="Button3" parent="Control/Inventory/Background" instance=ExtResource("1_tvywn")]
+layout_mode = 0
+offset_left = 890.0
+offset_top = 612.0
+offset_right = 1090.0
+offset_bottom = 712.0
+text = "frank"
+
+[node name="Button4" parent="Control/Inventory/Background" instance=ExtResource("1_tvywn")]
+layout_mode = 0
+offset_left = 906.0
+offset_top = 826.0
+offset_right = 1106.0
+offset_bottom = 926.0
+text = "cold"
+Thought = "It's cold here!"
+Question = "Pretty cold here, don't you think?"
+Leave = ""
 
 [node name="Story" type="Panel" parent="Control"]
 layout_mode = 1
@@ -131,46 +203,16 @@ layout_mode = 2
 type = 2
 preview = NodePath("../../../PreviewBubble")
 
-[node name="Inventory" type="Panel" parent="Control"]
+[node name="Divider" type="Panel" parent="Control"]
+custom_minimum_size = Vector2(20, 1080)
 layout_mode = 1
-anchors_preset = -1
+anchors_preset = 13
+anchor_left = 0.5
 anchor_right = 0.5
 anchor_bottom = 1.0
+offset_left = -7.0
+offset_right = 13.0
+grow_horizontal = 2
 grow_vertical = 2
-size_flags_horizontal = 3
-script = ExtResource("4_nuyx7")
-
-[node name="Button" parent="Control/Inventory" instance=ExtResource("1_tvywn")]
-layout_mode = 0
-offset_left = 184.0
-offset_top = 650.0
-offset_right = 384.0
-offset_bottom = 750.0
-text = "poopy poo!"
-
-[node name="Button2" parent="Control/Inventory" instance=ExtResource("1_tvywn")]
-layout_mode = 0
-offset_left = 162.0
-offset_top = 290.0
-offset_right = 362.0
-offset_bottom = 390.0
-text = "drugs"
-
-[node name="Button3" parent="Control/Inventory" instance=ExtResource("1_tvywn")]
-layout_mode = 0
-offset_left = 503.0
-offset_top = 136.0
-offset_right = 703.0
-offset_bottom = 236.0
-text = "frank"
-
-[node name="Button4" parent="Control/Inventory" instance=ExtResource("1_tvywn")]
-layout_mode = 0
-offset_left = 519.0
-offset_top = 350.0
-offset_right = 719.0
-offset_bottom = 450.0
-text = "cold"
-Thought = "It's cold here!"
-Question = "Pretty cold here, don't you think?"
-Leave = ""
+pivot_offset = Vector2(10, 0)
+theme_override_styles/panel = SubResource("StyleBoxTexture_jgldo")
