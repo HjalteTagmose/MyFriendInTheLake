@@ -2,6 +2,13 @@ using Godot;
 
 public partial class Inventory : Panel
 {
+	private Panel background;
+
+	public override void _Ready()
+	{
+		background = GetNode<Panel>("Background");
+	}
+
 	public override bool _CanDropData(Vector2 atPosition, Variant data)
 	{
 		bool containsPoint = GetRect().HasPoint(atPosition);
