@@ -1,6 +1,7 @@
 using Godot;
+using System;
 
-public partial class Inventory : Panel
+public partial class InventoryBackground : Draggable
 {
 	public override bool _CanDropData(Vector2 atPosition, Variant data)
 	{
@@ -12,7 +13,7 @@ public partial class Inventory : Panel
 	public override void _DropData(Vector2 atPosition, Variant data)
 	{
 		GD.Print("end drag");
-		var background = data.As<InventoryBackground>();
-		background.StopDrag();
+		var item = data.As<Item>();
+		item.StopDrag();
 	}
 }
