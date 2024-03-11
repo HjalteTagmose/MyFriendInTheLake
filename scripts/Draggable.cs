@@ -63,6 +63,12 @@ public abstract partial class Draggable : Control
 		Position = GetViewport().GetMousePosition() + startOffset;
 		ClampPosition();
 	}
+	
+	public void StopDrag(Vector2 pos)
+	{
+		StopDrag();
+		Position = pos - Size/2f;
+	}
 
 	public void CancelDrag()
 	{
