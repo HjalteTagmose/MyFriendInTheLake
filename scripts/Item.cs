@@ -25,6 +25,7 @@ public partial class Item : Draggable
 	public void GoTo()
 	{
 		GD.Print(Leave);
+		LocationManager.Instance.GoToLocation(Option);
 	}
 	
 	protected override void StartDrag()

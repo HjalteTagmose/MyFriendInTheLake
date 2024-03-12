@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://s5wqsr5euh0e"]
 
 [ext_resource type="Theme" uid="uid://c0ifn6jgsmbgv" path="res://themes/theme.tres" id="1_l0wno"]
-[ext_resource type="Script" path="res://StartButton.gd" id="2_w4itq"]
+[ext_resource type="Script" path="res://scripts/StartButton.gd" id="2_w4itq"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vp3n5"]
 bg_color = Color(1, 1, 1, 1)
