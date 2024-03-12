@@ -8,12 +8,12 @@
 [ext_resource type="Script" path="res://scripts/DialogueSystem.cs" id="6_1my5n"]
 [ext_resource type="Script" path="res://scripts/InventoryBackground.cs" id="6_gl0b8"]
 [ext_resource type="Script" path="res://scripts/Item.cs" id="6_ms88t"]
-[ext_resource type="Theme" uid="uid://c0ifn6jgsmbgv" path="res://theme.tres" id="7_kb40a"]
+[ext_resource type="Theme" uid="uid://c0ifn6jgsmbgv" path="res://themes/theme.tres" id="7_kb40a"]
 [ext_resource type="Texture2D" uid="uid://hi6o61a6glq4" path="res://sprites/park/park1.png" id="8_goqh2"]
 [ext_resource type="Texture2D" uid="uid://bojpiai20mw14" path="res://sprites/inventory/dots.png" id="8_hmrae"]
 [ext_resource type="Texture2D" uid="uid://dq4ujbrs3oica" path="res://sprites/items/polaroid.png" id="9_ou88d"]
 [ext_resource type="Texture2D" uid="uid://ck1jixkec0y6" path="res://sprites/park/park2.png" id="9_yfpiv"]
-[ext_resource type="Script" path="res://ActionsPanel.cs" id="10_bo17g"]
+[ext_resource type="Script" path="res://scripts/ActionsPanel.cs" id="10_bo17g"]
 [ext_resource type="Texture2D" uid="uid://b0m0mp2e3xme4" path="res://sprites/items/drugs.png" id="10_ka0tu"]
 [ext_resource type="Texture2D" uid="uid://5wnlsftxwwwa" path="res://sprites/inventory/line.png" id="10_y5y2k"]
 [ext_resource type="Script" path="res://scripts/StoryAction.cs" id="11_c527t"]
@@ -159,10 +159,10 @@ vertical_alignment = 1
 [node name="Test Item2" type="Panel" parent="UI/Inventory/Background"]
 custom_minimum_size = Vector2(200, 100)
 layout_mode = 0
-offset_left = 627.0
-offset_top = 788.0
-offset_right = 827.0
-offset_bottom = 888.0
+offset_left = 288.0
+offset_top = 882.0
+offset_right = 488.0
+offset_bottom = 982.0
 theme = ExtResource("7_kb40a")
 theme_override_styles/panel = SubResource("StyleBoxEmpty_0y1w5")
 script = ExtResource("6_ms88t")
@@ -186,7 +186,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "test"
+text = "test long"
 horizontal_alignment = 1
 vertical_alignment = 1
 

@@ -1,13 +1,13 @@
 [gd_scene load_steps=12 format=3 uid="uid://dhs03bddwmabh"]
 
-[ext_resource type="StyleBox" uid="uid://bkiemhhaaqghn" path="res://speech.tres" id="1_6x1y1"]
+[ext_resource type="StyleBox" uid="uid://bkiemhhaaqghn" path="res://themes/speech.tres" id="1_6x1y1"]
 [ext_resource type="Script" path="res://scripts/SpeechBubble.cs" id="2_ug814"]
-[ext_resource type="Theme" uid="uid://c0ifn6jgsmbgv" path="res://theme.tres" id="4_edvoq"]
+[ext_resource type="Theme" uid="uid://c0ifn6jgsmbgv" path="res://themes/theme.tres" id="4_edvoq"]
 [ext_resource type="Texture2D" uid="uid://fdn40br474xf" path="res://sprites/speechbubble-box/tail.png" id="4_u8xur"]
 [ext_resource type="Texture2D" uid="uid://b2vdisk0k5vxc" path="res://sprites/speechbubble-box/tail-alt.png" id="5_6wvs3"]
 [ext_resource type="Texture2D" uid="uid://cuolaajpdoqbo" path="res://sprites/speechbubble-box/speechbubble-alt.png" id="5_bpxcr"]
 [ext_resource type="Texture2D" uid="uid://ceurx4kj5v3hp" path="res://sprites/speechbubble-box/speechbubble-box.png" id="6_b2x73"]
-[ext_resource type="Script" path="res://ResizableLabel.cs" id="8_xmhm5"]
+[ext_resource type="Script" path="res://scripts/ResizableLabel.cs" id="8_xmhm5"]
 
 [sub_resource type="AnimatedTexture" id="AnimatedTexture_xoi0r"]
 frames = 2
