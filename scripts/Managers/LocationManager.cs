@@ -2,13 +2,13 @@ using Godot;
 
 public partial class LocationManager : Node
 {
-	[Export] private Control city, park;
+	[Export] private Control city, park, lake;
 	[Export] private Control vlad, kenzo;
 
 	public static LocationManager Instance;
     public override void _EnterTree() => Instance = this;
 
-	private string curLocation = "park";
+	private string curLocation = "lake";
 
 	public void GoToLocation(string name)
 	{
@@ -19,6 +19,7 @@ public partial class LocationManager : Node
 		}
 
 		curLocation = name;
+		lake.Hide();
 		park.Hide();
 		vlad.Hide();
 		city.Hide();
@@ -33,6 +34,9 @@ public partial class LocationManager : Node
 			case "park": 
 				park.Show();
 				vlad.Show();
+				break;
+			case "lake": 
+				lake.Show();
 				break;
 			default: GD.Print($"No location called {name}"); break;
 		}
