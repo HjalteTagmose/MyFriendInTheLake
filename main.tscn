@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=3 uid="uid://roxthgw71bi6"]
+[gd_scene load_steps=43 format=3 uid="uid://roxthgw71bi6"]
 
 [ext_resource type="Resource" uid="uid://dawf3iq04b07y" path="res://story/main.ink" id="2_1ep76"]
 [ext_resource type="Texture2D" uid="uid://cxc3ck2jjakoh" path="res://sprites/characters/vlad.png" id="2_4o28k"]
@@ -9,18 +9,21 @@
 [ext_resource type="Script" path="res://scripts/InventoryBackground.cs" id="6_gl0b8"]
 [ext_resource type="Script" path="res://scripts/Item.cs" id="6_ms88t"]
 [ext_resource type="Theme" uid="uid://c0ifn6jgsmbgv" path="res://themes/theme.tres" id="7_kb40a"]
-[ext_resource type="Texture2D" uid="uid://hi6o61a6glq4" path="res://sprites/park/park1.png" id="8_goqh2"]
+[ext_resource type="Texture2D" uid="uid://hi6o61a6glq4" path="res://sprites/areas/park1.png" id="8_goqh2"]
 [ext_resource type="Texture2D" uid="uid://bojpiai20mw14" path="res://sprites/inventory/dots.png" id="8_hmrae"]
 [ext_resource type="Texture2D" uid="uid://dq4ujbrs3oica" path="res://sprites/items/polaroid.png" id="9_ou88d"]
-[ext_resource type="Texture2D" uid="uid://ck1jixkec0y6" path="res://sprites/park/park2.png" id="9_yfpiv"]
+[ext_resource type="Texture2D" uid="uid://ck1jixkec0y6" path="res://sprites/areas/park2.png" id="9_yfpiv"]
 [ext_resource type="Script" path="res://scripts/ActionsPanel.cs" id="10_bo17g"]
 [ext_resource type="Texture2D" uid="uid://b0m0mp2e3xme4" path="res://sprites/items/drugs.png" id="10_ka0tu"]
 [ext_resource type="Texture2D" uid="uid://5wnlsftxwwwa" path="res://sprites/inventory/line.png" id="10_y5y2k"]
 [ext_resource type="Script" path="res://scripts/StoryAction.cs" id="11_c527t"]
 [ext_resource type="Texture2D" uid="uid://dyexdy4fcocjb" path="res://sprites/actions/ask1.png" id="12_0hljw"]
+[ext_resource type="Texture2D" uid="uid://bcypee4pp6d7j" path="res://sprites/areas/city1.png" id="13_kya4i"]
 [ext_resource type="Texture2D" uid="uid://boehnfg75klxd" path="res://sprites/actions/ask2.png" id="13_nth7k"]
+[ext_resource type="Texture2D" uid="uid://bl5g6h3ljwl7a" path="res://sprites/areas/city2.png" id="14_8o8ly"]
 [ext_resource type="Texture2D" uid="uid://c4o8unjre3g0v" path="res://sprites/actions/think1.png" id="14_xi1kg"]
 [ext_resource type="Texture2D" uid="uid://cajihc52rvcrm" path="res://sprites/actions/think2.png" id="15_pfdu0"]
+[ext_resource type="Texture2D" uid="uid://bw88u3seg5v4d" path="res://sprites/characters/kenzo.png" id="16_02pnk"]
 [ext_resource type="Texture2D" uid="uid://baw2gyidnubls" path="res://sprites/actions/go1.png" id="16_b137r"]
 [ext_resource type="Texture2D" uid="uid://34irhwhrmw50" path="res://sprites/actions/go2.png" id="17_tgdns"]
 
@@ -50,8 +53,18 @@ frame_0/duration = 0.5
 frame_1/texture = ExtResource("9_yfpiv")
 frame_1/duration = 0.5
 
+[sub_resource type="AnimatedTexture" id="AnimatedTexture_g50ml"]
+frames = 2
+frame_0/texture = ExtResource("13_kya4i")
+frame_0/duration = 0.5
+frame_1/texture = ExtResource("14_8o8ly")
+frame_1/duration = 0.5
+
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_tsonf"]
 texture = ExtResource("2_4o28k")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_7yyqf"]
+texture = ExtResource("16_02pnk")
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_uul3d"]
 
@@ -90,6 +103,8 @@ story = ExtResource("2_1ep76")
 [node name="StoryController" type="Node" parent="." node_paths=PackedStringArray("npcSpeechBubble")]
 script = ExtResource("3_tq3fv")
 npcSpeechBubble = NodePath("../UI/Story/SpeechBubble")
+
+[node name="LocationManager" type="Node" parent="."]
 
 [node name="UI" type="Control" parent="."]
 layout_mode = 3
@@ -190,6 +205,41 @@ text = "test long"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="Test city" type="Panel" parent="UI/Inventory/Background"]
+custom_minimum_size = Vector2(200, 100)
+layout_mode = 0
+offset_left = 448.0
+offset_top = 615.0
+offset_right = 648.0
+offset_bottom = 715.0
+theme = ExtResource("7_kb40a")
+theme_override_styles/panel = SubResource("StyleBoxEmpty_0y1w5")
+script = ExtResource("6_ms88t")
+CanLeave = true
+Question = "harukiya"
+Thought = "harukiya bar bla"
+Leave = "go to 春木屋"
+
+[node name="Panel" type="Panel" parent="UI/Inventory/Background/Test city"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Label" type="Label" parent="UI/Inventory/Background/Test city/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "go city"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="Portrait" type="Panel" parent="UI/Inventory/Background"]
 custom_minimum_size = Vector2(334, 434)
 layout_mode = 0
@@ -245,7 +295,17 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = SubResource("AnimatedTexture_g2rl8")
 
-[node name="Character" type="Panel" parent="UI/Story"]
+[node name="City" type="TextureRect" parent="UI/Story"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("AnimatedTexture_g50ml")
+
+[node name="Vlad" type="Panel" parent="UI/Story"]
 custom_minimum_size = Vector2(0, 300)
 layout_mode = 1
 anchors_preset = 15
@@ -260,6 +320,23 @@ grow_vertical = 2
 scale = Vector2(0.705, 0.705)
 size_flags_horizontal = 3
 theme_override_styles/panel = SubResource("StyleBoxTexture_tsonf")
+
+[node name="Kenzo" type="Panel" parent="UI/Story"]
+visible = false
+custom_minimum_size = Vector2(0, 300)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 71.0
+offset_top = 432.0
+offset_right = -103.0
+offset_bottom = 281.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.705, 0.705)
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxTexture_7yyqf")
 
 [node name="PreviewBubble" parent="UI/Story" instance=ExtResource("5_tao48")]
 visible = false
