@@ -20,6 +20,7 @@ public partial class Item : Draggable
 	public void ThinkAbout()
 	{
 		GD.Print(Thought);
+		StoryController.Instance.Think(Thought);
 	}
 
 	public void GoTo()

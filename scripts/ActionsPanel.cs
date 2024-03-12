@@ -20,19 +20,19 @@ public partial class ActionsPanel : Panel
 
 	private void UpdatePreview()
 	{
+		ask.Scale = think.Scale = go.Scale = Vector2.One;
+
 		if (Item.draggedItem == null) 
 		{
 			ask.SetAlpha(.5f);
 			think.SetAlpha(.5f);
 			go.SetAlpha(.5f);
-			preview.Hide();
 		}
 		else 
 		{
 			ask.SetAlpha(1f);
 			think.SetAlpha(1f);
 			go.SetAlpha(Item.draggedItem.CanLeave?1f:.5f);
-			ask.Scale = think.Scale = go.Scale = Vector2.One;
 		}
 
 		if (!preview.Visible)

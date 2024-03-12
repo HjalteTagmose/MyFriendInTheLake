@@ -8,6 +8,7 @@ public partial class StoryController : Node
     public override void _EnterTree() => Instance = this;
 
 	[Export] private SpeechBubble npcSpeechBubble;
+	[Export] private SpeechBubble previewSpeechBubble;
 
 	public override async void _Ready()
 	{
@@ -24,6 +25,7 @@ public partial class StoryController : Node
 			if (eventMouseButton.Pressed)
 				ContinueStory();
 	}
+
 	private void ContinueStory()
 	{
 		bool hasLine = DialogueSystem.Instance.TryGetNextLine(out string line);
@@ -34,6 +36,7 @@ public partial class StoryController : Node
 		}
 		
 		GD.Print(line);
+		previewSpeechBubble.Hide();
 		npcSpeechBubble.Show();
 		npcSpeechBubble.Say(line);
 	}
@@ -43,4 +46,10 @@ public partial class StoryController : Node
 		DialogueSystem.Instance.PickOption(text);
 		ContinueStory();
     }
+
+	public void Think(string text)
+	{
+		previewSpeechBubble.Show();
+		previewSpeechBubble.Say(text);
+	}
 }

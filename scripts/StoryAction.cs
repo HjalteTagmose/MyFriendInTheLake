@@ -41,7 +41,6 @@ public partial class StoryAction : Panel
 		GD.Print("do action");
 		var item = data.As<Item>();
 		item.CancelDrag();
-		preview.Visible = false;
 		switch (type)
 		{
 			case ActionType.ASKABOUT: 	item.AskAbout(); 	break;
