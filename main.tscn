@@ -156,6 +156,40 @@ text = "test"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="Test Item2" type="Panel" parent="UI/Inventory/Background"]
+custom_minimum_size = Vector2(200, 100)
+layout_mode = 0
+offset_left = 627.0
+offset_top = 788.0
+offset_right = 827.0
+offset_bottom = 888.0
+theme = ExtResource("7_kb40a")
+theme_override_styles/panel = SubResource("StyleBoxEmpty_0y1w5")
+script = ExtResource("6_ms88t")
+Question = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit amet ultricies nisl, et pulvinar diam."
+Thought = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit amet ultricies nisl, et pulvinar diam."
+Leave = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit amet ultricies nisl, et pulvinar diam."
+
+[node name="Panel" type="Panel" parent="UI/Inventory/Background/Test Item2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Label" type="Label" parent="UI/Inventory/Background/Test Item2/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "test"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="Portrait" type="Panel" parent="UI/Inventory/Background"]
 custom_minimum_size = Vector2(334, 434)
 layout_mode = 0
