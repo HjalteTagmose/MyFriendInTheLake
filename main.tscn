@@ -1,6 +1,6 @@
-[gd_scene load_steps=47 format=3 uid="uid://roxthgw71bi6"]
+[gd_scene load_steps=48 format=3 uid="uid://roxthgw71bi6"]
 
-[ext_resource type="Resource" uid="uid://dawf3iq04b07y" path="res://story/main.ink" id="2_1ep76"]
+[ext_resource type="Resource" uid="uid://bulreogc3l6jq" path="res://story/main.ink" id="2_1ep76"]
 [ext_resource type="Texture2D" uid="uid://cxc3ck2jjakoh" path="res://sprites/characters/vlad.png" id="2_4o28k"]
 [ext_resource type="Script" path="res://scripts/Managers/StoryController.cs" id="3_tq3fv"]
 [ext_resource type="Script" path="res://scripts/Managers/LocationManager.cs" id="4_70ipd"]
@@ -45,6 +45,9 @@ texture = ExtResource("9_ou88d")
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_j5enu"]
 texture = ExtResource("10_ka0tu")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_esqr7"]
+bg_color = Color(0, 0, 0, 0.862745)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lilpc"]
 bg_color = Color(1, 1, 1, 1)
@@ -112,15 +115,16 @@ story = ExtResource("2_1ep76")
 
 [node name="StoryController" type="Node" parent="." node_paths=PackedStringArray("npcSpeechBubble", "previewSpeechBubble")]
 script = ExtResource("3_tq3fv")
-npcSpeechBubble = NodePath("")
-previewSpeechBubble = NodePath("")
+npcSpeechBubble = NodePath("../UI/Story/SpeechBubble")
+previewSpeechBubble = NodePath("../UI/Story/PreviewBubble")
 
-[node name="LocationManager" type="Node" parent="." node_paths=PackedStringArray("city", "park", "vlad", "kenzo")]
+[node name="LocationManager" type="Node" parent="." node_paths=PackedStringArray("city", "park", "lake", "vlad", "kenzo")]
 script = ExtResource("4_70ipd")
-city = NodePath("")
-park = NodePath("")
-vlad = NodePath("")
-kenzo = NodePath("")
+city = NodePath("../UI/Story/City")
+park = NodePath("../UI/Story/Park")
+lake = NodePath("../UI/Story/Lake")
+vlad = NodePath("../UI/Story/Vlad")
+kenzo = NodePath("../UI/Story/Kenzo")
 
 [node name="UI" type="Control" parent="."]
 layout_mode = 3
@@ -144,7 +148,7 @@ size_flags_horizontal = 3
 theme_override_styles/panel = SubResource("StyleBoxFlat_a3ces")
 script = ExtResource("4_nuyx7")
 
-[node name="Background" type="Panel" parent="UI/Inventory"]
+[node name="Background" type="Panel" parent="UI/Inventory" node_paths=PackedStringArray("overlay")]
 texture_repeat = 2
 custom_minimum_size = Vector2(2048, 2048)
 layout_mode = 1
@@ -154,6 +158,7 @@ offset_right = 1637.0
 offset_bottom = 1737.0
 theme_override_styles/panel = SubResource("StyleBoxTexture_4b5iu")
 script = ExtResource("6_gl0b8")
+overlay = NodePath("Overlay")
 unparentOnDrag = false
 resetPosOnCancel = false
 useOffset = true
@@ -296,6 +301,42 @@ text = "go park
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="Test lake" type="Panel" parent="UI/Inventory/Background"]
+custom_minimum_size = Vector2(200, 100)
+layout_mode = 0
+offset_left = 516.0
+offset_top = 645.0
+offset_right = 716.0
+offset_bottom = 745.0
+theme = ExtResource("7_kb40a")
+theme_override_styles/panel = SubResource("StyleBoxEmpty_0y1w5")
+script = ExtResource("6_ms88t")
+CanLeave = true
+Option = "lake"
+Question = "The lake?"
+Thought = "The park is mostly empty at this time"
+Leave = "go to park"
+
+[node name="Panel" type="Panel" parent="UI/Inventory/Background/Test lake"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Label" type="Label" parent="UI/Inventory/Background/Test lake/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "go lake"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="Portrait" type="Panel" parent="UI/Inventory/Background"]
 custom_minimum_size = Vector2(334, 434)
 layout_mode = 0
@@ -327,10 +368,13 @@ Question = "Do you want some drugs?"
 Thought = "It makes me uncomfortable"
 Leave = ""
 
-[node name="Control" type="Control" parent="UI/Inventory/Background"]
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+[node name="Overlay" type="Panel" parent="UI/Inventory/Background"]
+texture_repeat = 2
+custom_minimum_size = Vector2(2048, 2048)
+layout_mode = 1
+offset_right = 2048.0
+offset_bottom = 2048.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_esqr7")
 
 [node name="Story" type="Panel" parent="UI"]
 layout_mode = 1

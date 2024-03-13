@@ -22,13 +22,13 @@ public partial class ActionsPanel : Panel
 	{
 		ask.Scale = think.Scale = go.Scale = Vector2.One;
 
-		if (Item.draggedItem == null) 
+		if (Item.draggedItem == null) // || !DialogueSystem.Instance.WaitingForChoice
 		{
 			ask.SetAlpha(.5f);
 			think.SetAlpha(.5f);
 			go.SetAlpha(.5f);
 		}
-		else 
+		else if (Item.draggedItem != null)
 		{
 			ask.SetAlpha(1f);
 			think.SetAlpha(1f);
@@ -38,7 +38,7 @@ public partial class ActionsPanel : Panel
 		if (!preview.Visible)
 			return;
 
-		GD.Print("dragging: " + Item.draggedItem != null);
+		// GD.Print("dragging: " + Item.draggedItem != null);
 		if (Item.draggedItem == null) 
 		{
 			preview.Hide();

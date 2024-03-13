@@ -30,10 +30,12 @@ public partial class LocationManager : Node
 			case "city": 
 				city.Show();
 				kenzo.Show();
+				StoryController.Instance.PickOption("city");
 				break;
 			case "park": 
 				park.Show();
 				vlad.Show();
+				StoryController.Instance.PickOption("park");
 				break;
 			case "lake": 
 				lake.Show();

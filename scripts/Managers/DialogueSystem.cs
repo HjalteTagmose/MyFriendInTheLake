@@ -10,9 +10,30 @@ public partial class DialogueSystem : Node
 
     [Export] private InkStory story;
     public bool WaitingForChoice => story.CanContinue;
+	public bool InIntro { get; private set; }
+
+	void poop() => GD.Print("INTRO!");
+	public override void _Ready()
+	{
+		// THIS DOESNT WORK FSR
+		// IT DOES CALL THO
+		// FIGURE OUT CALLABLES OR SOMETHING
+		// base._Ready();
+		// var callable = new Callable(this, "poop");
+		// story.ObserveVariable("intro", callable);
+
+		/*
+		ERROR: Invalid call. Nonexistent callable 'Node(DialogueSystem.cs)::poop'.
+			at: void Godot.NativeInterop.ExceptionUtils.DebugCheckCallError(Godot.NativeInterop.godot_callable&, Godot.NativeInterop.godot_variant**, int, Godot.NativeInterop.godot_variant_call_error) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Core/NativeInterop/ExceptionUtils.cs:159)
+		ERROR: Invalid call. Nonexistent callable 'Node(DialogueSystem.cs)::'.
+			at: void Godot.NativeInterop.ExceptionUtils.DebugCheckCallError(Godot.NativeInterop.godot_callable&, Godot.NativeInterop.godot_variant**, int, Godot.NativeInterop.godot_variant_call_error) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Core/NativeInterop/ExceptionUtils.cs:159)
+		*/
+	}
 
 	public bool TryGetNextLine(out string line)
 	{
+		UpdateVariables();
+
 		line = "";
 		if (!story.CanContinue)
 			return false;
@@ -26,6 +47,8 @@ public partial class DialogueSystem : Node
 
 	public void PickOption(string option)
 	{		
+		UpdateVariables();
+		
 		if (story.CanContinue)
 			return;
 
@@ -44,4 +67,12 @@ public partial class DialogueSystem : Node
 			return 0; // 0 is always unknown
 		}
 	}
+
+	private void UpdateVariables()
+	{
+		InIntro = GetVar<bool>("intro");
+		GD.Print("Intro: " + InIntro);
+	}
+
+	private T GetVar<[MustBeVariant] T>(string name) => story.FetchVariable<T>(name);
 }

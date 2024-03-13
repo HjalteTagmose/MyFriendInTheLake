@@ -3,6 +3,16 @@ using System;
 
 public partial class InventoryBackground : Draggable
 {
+	[Export] private Control overlay;
+
+	public override void _Process(double delta)
+	{
+		base._Process(delta);
+
+		bool intro = DialogueSystem.Instance.InIntro;
+		overlay.Visible = intro;
+	}
+
 	public override void _Input(InputEvent @event)
 	{
 		if (@event is InputEventMouseButton mouseEvent && mouseEvent.Pressed)
