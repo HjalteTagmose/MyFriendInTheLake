@@ -4,6 +4,11 @@ public partial class ResizableLabel : Label
 {
 	private string oldText = "";
 
+	public override void _Ready()
+	{
+		FitText();
+	}
+
 	public override void _Process(double delta)
 	{
 		if(Text != oldText)

@@ -1,7 +1,5 @@
 using Godot;
 using GodotInk;
-using Ink.Parsed;
-using System;
 
 public partial class DialogueSystem : Node
 { 
@@ -12,22 +10,16 @@ public partial class DialogueSystem : Node
     public bool WaitingForChoice => story.CanContinue;
 	public bool InIntro { get; private set; }
 
-	void poop() => GD.Print("INTRO!");
 	public override void _Ready()
 	{
-		// THIS DOESNT WORK FSR
-		// IT DOES CALL THO
-		// FIGURE OUT CALLABLES OR SOMETHING
-		// base._Ready();
-		// var callable = new Callable(this, "poop");
-		// story.ObserveVariable("intro", callable);
+		base._Ready();
+		story.BindExternalFunction("test", () => {GD.Print("test");UpdateVariables();});
+	}
 
-		/*
-		ERROR: Invalid call. Nonexistent callable 'Node(DialogueSystem.cs)::poop'.
-			at: void Godot.NativeInterop.ExceptionUtils.DebugCheckCallError(Godot.NativeInterop.godot_callable&, Godot.NativeInterop.godot_variant**, int, Godot.NativeInterop.godot_variant_call_error) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Core/NativeInterop/ExceptionUtils.cs:159)
-		ERROR: Invalid call. Nonexistent callable 'Node(DialogueSystem.cs)::'.
-			at: void Godot.NativeInterop.ExceptionUtils.DebugCheckCallError(Godot.NativeInterop.godot_callable&, Godot.NativeInterop.godot_variant**, int, Godot.NativeInterop.godot_variant_call_error) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Core/NativeInterop/ExceptionUtils.cs:159)
-		*/
+	public override void _Process(double delta)
+	{
+		base._Process(delta);
+		UpdateVariables();
 	}
 
 	public bool TryGetNextLine(out string line)

@@ -1,5 +1,6 @@
-[gd_scene load_steps=48 format=3 uid="uid://roxthgw71bi6"]
+[gd_scene load_steps=53 format=3 uid="uid://roxthgw71bi6"]
 
+[ext_resource type="Script" path="res://InkObserver.gd" id="1_sk1m2"]
 [ext_resource type="Resource" uid="uid://bulreogc3l6jq" path="res://story/main.ink" id="2_1ep76"]
 [ext_resource type="Texture2D" uid="uid://cxc3ck2jjakoh" path="res://sprites/characters/vlad.png" id="2_4o28k"]
 [ext_resource type="Script" path="res://scripts/Managers/StoryController.cs" id="3_tq3fv"]
@@ -16,9 +17,12 @@
 [ext_resource type="Texture2D" uid="uid://ck1jixkec0y6" path="res://sprites/areas/park2.png" id="9_yfpiv"]
 [ext_resource type="Script" path="res://scripts/Actions/ActionsPanel.cs" id="10_bo17g"]
 [ext_resource type="Texture2D" uid="uid://b0m0mp2e3xme4" path="res://sprites/items/drugs.png" id="10_ka0tu"]
+[ext_resource type="Texture2D" uid="uid://cab0e7ak5dymo" path="res://sprites/inventory/knowledge.png" id="10_nqchj"]
 [ext_resource type="Texture2D" uid="uid://5wnlsftxwwwa" path="res://sprites/inventory/line.png" id="10_y5y2k"]
 [ext_resource type="Script" path="res://scripts/Actions/StoryAction.cs" id="11_c527t"]
 [ext_resource type="Texture2D" uid="uid://dyexdy4fcocjb" path="res://sprites/actions/ask1.png" id="12_0hljw"]
+[ext_resource type="Script" path="res://scripts/ResizableLabel.cs" id="12_hjepd"]
+[ext_resource type="Texture2D" uid="uid://cekf4ni1cxb5" path="res://sprites/inventory/thought.png" id="13_0p2fx"]
 [ext_resource type="Texture2D" uid="uid://bcypee4pp6d7j" path="res://sprites/areas/city1.png" id="13_kya4i"]
 [ext_resource type="Texture2D" uid="uid://boehnfg75klxd" path="res://sprites/actions/ask2.png" id="13_nth7k"]
 [ext_resource type="Texture2D" uid="uid://bl5g6h3ljwl7a" path="res://sprites/areas/city2.png" id="14_8o8ly"]
@@ -38,7 +42,11 @@ texture = ExtResource("8_hmrae")
 axis_stretch_horizontal = 2
 axis_stretch_vertical = 2
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0y1w5"]
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_hkk3o"]
+texture = ExtResource("10_nqchj")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_klu3x"]
+texture = ExtResource("13_0p2fx")
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_iirac"]
 texture = ExtResource("9_ou88d")
@@ -109,6 +117,10 @@ texture = ExtResource("10_y5y2k")
 
 [node name="main" type="Node2D"]
 
+[node name="InkObserver" type="Node" parent="."]
+script = ExtResource("1_sk1m2")
+story = ExtResource("2_1ep76")
+
 [node name="DialogueSystem" type="Node" parent="."]
 script = ExtResource("6_1my5n")
 story = ExtResource("2_1ep76")
@@ -163,179 +175,58 @@ unparentOnDrag = false
 resetPosOnCancel = false
 useOffset = true
 
-[node name="Test Item" type="Panel" parent="UI/Inventory/Background"]
-custom_minimum_size = Vector2(200, 100)
+[node name="Knowledge" type="Panel" parent="UI/Inventory/Background"]
+custom_minimum_size = Vector2(100, 100)
 layout_mode = 0
-offset_left = 1008.0
-offset_top = 1079.0
-offset_right = 1208.0
-offset_bottom = 1179.0
+offset_left = 775.0
+offset_top = 1161.0
+offset_right = 1209.0
+offset_bottom = 1275.0
+pivot_offset = Vector2(-788, -454)
 theme = ExtResource("7_kb40a")
-theme_override_styles/panel = SubResource("StyleBoxEmpty_0y1w5")
+theme_override_styles/panel = SubResource("StyleBoxTexture_hkk3o")
 script = ExtResource("6_ms88t")
 
-[node name="Panel" type="Panel" parent="UI/Inventory/Background/Test Item"]
+[node name="Label" type="Label" parent="UI/Inventory/Background/Knowledge"]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
+anchors_preset = -1
+anchor_left = 0.04
+anchor_right = 0.95
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-mouse_filter = 2
-
-[node name="Label" type="Label" parent="UI/Inventory/Background/Test Item/Panel"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-text = "test"
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Lorem ipsum Lorem ipsum Lorem ipsum "
 horizontal_alignment = 1
 vertical_alignment = 1
+clip_text = true
+script = ExtResource("12_hjepd")
 
-[node name="Test Item2" type="Panel" parent="UI/Inventory/Background"]
-custom_minimum_size = Vector2(200, 100)
+[node name="Thought" type="Panel" parent="UI/Inventory/Background"]
+custom_minimum_size = Vector2(100, 100)
 layout_mode = 0
-offset_left = 671.0
-offset_top = 1195.0
-offset_right = 871.0
-offset_bottom = 1295.0
+offset_left = 902.0
+offset_top = 431.0
+offset_right = 1233.0
+offset_bottom = 564.0
 theme = ExtResource("7_kb40a")
-theme_override_styles/panel = SubResource("StyleBoxEmpty_0y1w5")
+theme_override_styles/panel = SubResource("StyleBoxTexture_klu3x")
 script = ExtResource("6_ms88t")
-Question = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit amet ultricies nisl, et pulvinar diam."
-Thought = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit amet ultricies nisl, et pulvinar diam."
-Leave = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit amet ultricies nisl, et pulvinar diam."
 
-[node name="Panel" type="Panel" parent="UI/Inventory/Background/Test Item2"]
+[node name="Label" type="Label" parent="UI/Inventory/Background/Thought"]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
+anchors_preset = -1
+anchor_left = 0.09
+anchor_right = 0.91
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-mouse_filter = 2
-
-[node name="Label" type="Label" parent="UI/Inventory/Background/Test Item2/Panel"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-text = "test long"
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Lorem ipsum Lorem ipsum Lorem ipsum "
 horizontal_alignment = 1
 vertical_alignment = 1
-
-[node name="Test city" type="Panel" parent="UI/Inventory/Background"]
-custom_minimum_size = Vector2(200, 100)
-layout_mode = 0
-offset_left = 1045.0
-offset_top = 541.0
-offset_right = 1245.0
-offset_bottom = 641.0
-theme = ExtResource("7_kb40a")
-theme_override_styles/panel = SubResource("StyleBoxEmpty_0y1w5")
-script = ExtResource("6_ms88t")
-CanLeave = true
-Option = "city"
-Question = "harukiya"
-Thought = "harukiya bar bla"
-Leave = "go to 春木屋"
-
-[node name="Panel" type="Panel" parent="UI/Inventory/Background/Test city"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-
-[node name="Label" type="Label" parent="UI/Inventory/Background/Test city/Panel"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-text = "go city"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Test park" type="Panel" parent="UI/Inventory/Background"]
-custom_minimum_size = Vector2(200, 100)
-layout_mode = 0
-offset_left = 516.0
-offset_top = 645.0
-offset_right = 716.0
-offset_bottom = 745.0
-theme = ExtResource("7_kb40a")
-theme_override_styles/panel = SubResource("StyleBoxEmpty_0y1w5")
-script = ExtResource("6_ms88t")
-CanLeave = true
-Option = "park"
-Question = "The park?"
-Thought = "The park is mostly empty at this time"
-Leave = "go to park"
-
-[node name="Panel" type="Panel" parent="UI/Inventory/Background/Test park"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-
-[node name="Label" type="Label" parent="UI/Inventory/Background/Test park/Panel"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-text = "go park
-"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Test lake" type="Panel" parent="UI/Inventory/Background"]
-custom_minimum_size = Vector2(200, 100)
-layout_mode = 0
-offset_left = 516.0
-offset_top = 645.0
-offset_right = 716.0
-offset_bottom = 745.0
-theme = ExtResource("7_kb40a")
-theme_override_styles/panel = SubResource("StyleBoxEmpty_0y1w5")
-script = ExtResource("6_ms88t")
-CanLeave = true
-Option = "lake"
-Question = "The lake?"
-Thought = "The park is mostly empty at this time"
-Leave = "go to park"
-
-[node name="Panel" type="Panel" parent="UI/Inventory/Background/Test lake"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-
-[node name="Label" type="Label" parent="UI/Inventory/Background/Test lake/Panel"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-text = "go lake"
-horizontal_alignment = 1
-vertical_alignment = 1
+clip_text = true
+script = ExtResource("12_hjepd")
 
 [node name="Portrait" type="Panel" parent="UI/Inventory/Background"]
 custom_minimum_size = Vector2(334, 434)
@@ -369,6 +260,7 @@ Thought = "It makes me uncomfortable"
 Leave = ""
 
 [node name="Overlay" type="Panel" parent="UI/Inventory/Background"]
+visible = false
 texture_repeat = 2
 custom_minimum_size = Vector2(2048, 2048)
 layout_mode = 1

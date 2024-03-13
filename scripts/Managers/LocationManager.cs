@@ -39,6 +39,7 @@ public partial class LocationManager : Node
 				break;
 			case "lake": 
 				lake.Show();
+				StoryController.Instance.PickOption("lake");
 				break;
 			default: GD.Print($"No location called {name}"); break;
 		}
