@@ -63,7 +63,6 @@ public partial class DialogueSystem : Node
 	private void UpdateVariables()
 	{
 		InIntro = GetVar<bool>("intro");
-		GD.Print("Intro: " + InIntro);
 	}
 
 	private T GetVar<[MustBeVariant] T>(string name) => story.FetchVariable<T>(name);
