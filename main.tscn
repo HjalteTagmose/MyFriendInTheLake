@@ -1,4 +1,4 @@
-[gd_scene load_steps=51 format=3 uid="uid://roxthgw71bi6"]
+[gd_scene load_steps=53 format=3 uid="uid://roxthgw71bi6"]
 
 [ext_resource type="Script" path="res://InkObserver.gd" id="1_sk1m2"]
 [ext_resource type="Resource" uid="uid://bulreogc3l6jq" path="res://story/main.ink" id="2_1ep76"]
@@ -28,6 +28,7 @@
 [ext_resource type="Texture2D" uid="uid://bl5g6h3ljwl7a" path="res://sprites/areas/city2.png" id="14_8o8ly"]
 [ext_resource type="Texture2D" uid="uid://c4o8unjre3g0v" path="res://sprites/actions/think1.png" id="14_xi1kg"]
 [ext_resource type="Texture2D" uid="uid://cajihc52rvcrm" path="res://sprites/actions/think2.png" id="15_pfdu0"]
+[ext_resource type="Texture2D" uid="uid://bikmicdmd1oir" path="res://sprites/items/money.png" id="15_sotqt"]
 [ext_resource type="Texture2D" uid="uid://bw88u3seg5v4d" path="res://sprites/characters/kenzo.png" id="16_02pnk"]
 [ext_resource type="Texture2D" uid="uid://baw2gyidnubls" path="res://sprites/actions/go1.png" id="16_b137r"]
 [ext_resource type="Texture2D" uid="uid://34irhwhrmw50" path="res://sprites/actions/go2.png" id="17_tgdns"]
@@ -49,6 +50,9 @@ texture = ExtResource("13_0p2fx")
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_iirac"]
 texture = ExtResource("9_ou88d")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_p25of"]
+texture = ExtResource("15_sotqt")
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_j5enu"]
 texture = ExtResource("10_ka0tu")
@@ -234,6 +238,21 @@ scaleWhenDragged = 0.8
 Option = "frank"
 Question = "Have you seen this guy?"
 Thought = "Picture of Frank. This was just a few weeks ago..."
+Leave = ""
+
+[node name="Money" type="Panel" parent="UI/Inventory/Background"]
+custom_minimum_size = Vector2(255, 171)
+layout_mode = 0
+offset_left = 543.0
+offset_top = 381.0
+offset_right = 798.0
+offset_bottom = 552.0
+theme = ExtResource("7_kb40a")
+theme_override_styles/panel = SubResource("StyleBoxTexture_p25of")
+script = ExtResource("6_ms88t")
+Option = "money"
+Question = "20 bucks?"
+Thought = "20 bucks"
 Leave = ""
 
 [node name="Drugs" type="Panel" parent="UI/Inventory/Background"]
