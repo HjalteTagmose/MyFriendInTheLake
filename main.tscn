@@ -1,4 +1,4 @@
-[gd_scene load_steps=53 format=3 uid="uid://roxthgw71bi6"]
+[gd_scene load_steps=51 format=3 uid="uid://roxthgw71bi6"]
 
 [ext_resource type="Script" path="res://InkObserver.gd" id="1_sk1m2"]
 [ext_resource type="Resource" uid="uid://bulreogc3l6jq" path="res://story/main.ink" id="2_1ep76"]
@@ -30,9 +30,8 @@
 [ext_resource type="Texture2D" uid="uid://cajihc52rvcrm" path="res://sprites/actions/think2.png" id="15_pfdu0"]
 [ext_resource type="Texture2D" uid="uid://bw88u3seg5v4d" path="res://sprites/characters/kenzo.png" id="16_02pnk"]
 [ext_resource type="Texture2D" uid="uid://baw2gyidnubls" path="res://sprites/actions/go1.png" id="16_b137r"]
-[ext_resource type="Texture2D" uid="uid://yt4qtftpr4h4" path="res://sprites/areas/lake1.png" id="16_yyln0"]
 [ext_resource type="Texture2D" uid="uid://34irhwhrmw50" path="res://sprites/actions/go2.png" id="17_tgdns"]
-[ext_resource type="Texture2D" uid="uid://b18e1bd05cg3c" path="res://sprites/areas/lake2.png" id="17_yu3s2"]
+[ext_resource type="PackedScene" uid="uid://cix4rjvu46ci2" path="res://lake.tscn" id="20_10yug"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_a3ces"]
 bg_color = Color(1, 1, 1, 1)
@@ -72,13 +71,6 @@ frames = 2
 frame_0/texture = ExtResource("13_kya4i")
 frame_0/duration = 0.5
 frame_1/texture = ExtResource("14_8o8ly")
-frame_1/duration = 0.5
-
-[sub_resource type="AnimatedTexture" id="AnimatedTexture_h5w1n"]
-frames = 2
-frame_0/texture = ExtResource("16_yyln0")
-frame_0/duration = 0.5
-frame_1/texture = ExtResource("17_yu3s2")
 frame_1/duration = 0.5
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_tsonf"]
@@ -134,7 +126,7 @@ previewSpeechBubble = NodePath("../UI/Story/PreviewBubble")
 script = ExtResource("4_70ipd")
 city = NodePath("../UI/Story/City")
 park = NodePath("../UI/Story/Park")
-lake = NodePath("../UI/Story/Lake")
+lake = NodePath("")
 vlad = NodePath("../UI/Story/Vlad")
 kenzo = NodePath("../UI/Story/Kenzo")
 
@@ -299,14 +291,9 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = SubResource("AnimatedTexture_g50ml")
 
-[node name="Lake" type="TextureRect" parent="UI/Story"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = SubResource("AnimatedTexture_h5w1n")
+[node name="Lake" parent="UI/Story" instance=ExtResource("20_10yug")]
+layout_mode = 0
+anchors_preset = 0
 
 [node name="Vlad" type="Panel" parent="UI/Story"]
 visible = false

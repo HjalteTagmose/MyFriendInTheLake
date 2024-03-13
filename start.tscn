@@ -1,10 +1,30 @@
-[gd_scene load_steps=4 format=3 uid="uid://s5wqsr5euh0e"]
+[gd_scene load_steps=13 format=3 uid="uid://s5wqsr5euh0e"]
 
 [ext_resource type="Theme" uid="uid://c0ifn6jgsmbgv" path="res://themes/theme.tres" id="1_l0wno"]
+[ext_resource type="Texture2D" uid="uid://dmevmuxxp6idl" path="res://sprites/logo/logo1.png" id="2_bmwda"]
 [ext_resource type="Script" path="res://scripts/StartButton.gd" id="2_w4itq"]
+[ext_resource type="Texture2D" uid="uid://c23i7iqeklvwt" path="res://sprites/logo/logo2.png" id="3_bpf1e"]
+[ext_resource type="PackedScene" uid="uid://cix4rjvu46ci2" path="res://lake.tscn" id="3_vju02"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vp3n5"]
-bg_color = Color(1, 1, 1, 1)
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="AnimatedTexture" id="AnimatedTexture_eox8o"]
+frames = 2
+frame_0/texture = ExtResource("2_bmwda")
+frame_0/duration = 0.5
+frame_1/texture = ExtResource("3_bpf1e")
+frame_1/duration = 0.5
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_aljgm"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_qdclj"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_i4j5d"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_m5ytq"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_x135k"]
 
 [node name="start" type="Node2D"]
 
@@ -30,7 +50,29 @@ grow_vertical = 2
 size_flags_horizontal = 3
 theme_override_styles/panel = SubResource("StyleBoxFlat_vp3n5")
 
-[node name="Button" type="Button" parent="UI/Story"]
+[node name="Lake" parent="UI/Story" instance=ExtResource("3_vju02")]
+layout_mode = 1
+grow_horizontal = 1
+grow_vertical = 1
+expand_mode = 3
+stretch_mode = 5
+
+[node name="logo" type="TextureRect" parent="UI/Story"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 389.0
+offset_top = 56.0
+offset_right = 225.0
+offset_bottom = -729.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.64874, 0.64874)
+texture = SubResource("AnimatedTexture_eox8o")
+stretch_mode = 5
+
+[node name="Start" type="Button" parent="UI/Story"]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -43,5 +85,12 @@ offset_right = 150.0
 grow_horizontal = 2
 grow_vertical = 0
 theme = ExtResource("1_l0wno")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(0.478431, 0.478431, 0.478431, 1)
+theme_override_styles/normal = SubResource("StyleBoxEmpty_aljgm")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_qdclj")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_i4j5d")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_m5ytq")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_x135k")
 text = "start"
 script = ExtResource("2_w4itq")

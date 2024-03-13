@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://cix4rjvu46ci2"]
+
+[ext_resource type="Texture2D" uid="uid://yt4qtftpr4h4" path="res://sprites/areas/lake1.png" id="1_om5x1"]
+[ext_resource type="Texture2D" uid="uid://b18e1bd05cg3c" path="res://sprites/areas/lake2.png" id="2_q318w"]
+
+[sub_resource type="AnimatedTexture" id="AnimatedTexture_h5w1n"]
+frames = 2
+frame_0/texture = ExtResource("1_om5x1")
+frame_0/duration = 0.5
+frame_1/texture = ExtResource("2_q318w")
+frame_1/duration = 0.5
+
+[node name="Lake" type="TextureRect"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("AnimatedTexture_h5w1n")
