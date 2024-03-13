@@ -1,6 +1,5 @@
-[gd_scene load_steps=53 format=3 uid="uid://roxthgw71bi6"]
+[gd_scene load_steps=52 format=3 uid="uid://roxthgw71bi6"]
 
-[ext_resource type="Script" path="res://InkObserver.gd" id="1_sk1m2"]
 [ext_resource type="Resource" uid="uid://bulreogc3l6jq" path="res://story/main.ink" id="2_1ep76"]
 [ext_resource type="Texture2D" uid="uid://cxc3ck2jjakoh" path="res://sprites/characters/vlad.png" id="2_4o28k"]
 [ext_resource type="Script" path="res://scripts/Managers/StoryController.cs" id="3_tq3fv"]
@@ -113,24 +112,20 @@ texture = ExtResource("10_y5y2k")
 
 [node name="main" type="Node2D"]
 
-[node name="InkObserver" type="Node" parent="."]
-script = ExtResource("1_sk1m2")
-story = ExtResource("2_1ep76")
-
-[node name="DialogueSystem" type="Node" parent="."]
+[node name="DialogueSystem" type="Node" parent="." node_paths=PackedStringArray("inventory")]
 script = ExtResource("6_1my5n")
 story = ExtResource("2_1ep76")
+inventory = NodePath("../UI/Inventory")
 
 [node name="StoryController" type="Node" parent="." node_paths=PackedStringArray("npcSpeechBubble", "previewSpeechBubble")]
 script = ExtResource("3_tq3fv")
 npcSpeechBubble = NodePath("../UI/Story/SpeechBubble")
 previewSpeechBubble = NodePath("../UI/Story/PreviewBubble")
 
-[node name="LocationManager" type="Node" parent="." node_paths=PackedStringArray("city", "park", "lake", "vlad", "kenzo")]
+[node name="LocationManager" type="Node" parent="." node_paths=PackedStringArray("city", "park", "vlad", "kenzo")]
 script = ExtResource("4_70ipd")
 city = NodePath("../UI/Story/City")
 park = NodePath("../UI/Story/Park")
-lake = NodePath("")
 vlad = NodePath("../UI/Story/Vlad")
 kenzo = NodePath("../UI/Story/Kenzo")
 
@@ -313,6 +308,10 @@ texture = SubResource("AnimatedTexture_g50ml")
 [node name="Lake" parent="UI/Story" instance=ExtResource("20_10yug")]
 layout_mode = 0
 anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+grow_horizontal = 1
+grow_vertical = 1
 
 [node name="Vlad" type="Panel" parent="UI/Story"]
 visible = false

@@ -7,13 +7,16 @@ public partial class DialogueSystem : Node
     public override void _EnterTree() => Instance = this;
 
     [Export] private InkStory story;
+	[Export] private Inventory inventory;
+
     public bool WaitingForChoice => story.CanContinue;
 	public bool InIntro { get; private set; }
 
 	public override void _Ready()
 	{
 		base._Ready();
-		story.BindExternalFunction("test", () => {GD.Print("test");UpdateVariables();});
+		story.BindExternalFunction("show_item", (string name) => inventory.ShowItem(name));
+		story.BindExternalFunction("hide_item", (string name) => inventory.HideItem(name));
 	}
 
 	public override void _Process(double delta)

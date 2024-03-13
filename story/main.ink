@@ -1,7 +1,8 @@
 VAR intro = true
 VAR delivered_drugs = false
 VAR received_drugs = false
-EXTERNAL test()
+EXTERNAL show_item(name)
+EXTERNAL hide_item(name)
 
 -> lake_intro
 
@@ -11,6 +12,7 @@ EXTERNAL test()
 === lake_intro ===
 ~ intro = true
 Franky
+~ show_item("portrait")
 -> lake_start
 
 === lake_start ===
@@ -19,9 +21,9 @@ Franky
  + [drugs] -> lake_drugs
  + [cold] -> lake_cold
  + [frank] -> lake_frank
+ // LOCATIONS
  + [city] -> kenzo_intro
  + [park] -> vlad_intro
- + [lake] -> lake_intro
 
 === lake_cold ===
 Are you cold too, Frank?
@@ -67,6 +69,7 @@ Hey man, what you need?
  + [drugs] -> vlad_drugs -> vlad_start
  + [cold] -> vlad_cold -> vlad_start
  + [frank] -> vlad_frank -> vlad_start
+ // LOCATIONS
  + [city] -> kenzo_intro
  + [lake] -> lake_intro
  
@@ -110,8 +113,6 @@ I don't know who that is
 //
 === kenzo_intro ===
 ~ intro = true
-
-
 Don't I know you?
 -> kenzo_start
 
@@ -121,6 +122,7 @@ Don't I know you?
  + [drugs] -> kenzo_drugs
  + [cold] -> kenzo_cold
  + [frank] -> kenzo_frank
+ // LOCATIONS
  + [park] -> vlad_intro
  + [lake] -> lake_intro
 
