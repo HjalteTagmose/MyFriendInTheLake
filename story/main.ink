@@ -19,7 +19,7 @@ EXTERNAL set_line_type(type)
 === lake_intro ===
 ~ set_line_type("story")
 {
-- do_park_intro:
+- do_lake_intro:
 ~ show_item("portrait")
 Oh Frank, you really messed up this time
 You just had to leave for a moment, yet you never came back
@@ -58,6 +58,28 @@ Maybe next time
     -> lake_start
  + [lake]
     How's the water?
+    -> lake_start
+ + [vladjob]
+    Should I take a job with Vlad?
+    Will that help me find out what happened?
+    Am I just a drugdealer at this point?
+    -> lake_start
+ + [vladtookmoney]
+    Can you believe Vlad took my money?
+    Maybe Kenzo was right about him
+    -> lake_start
+ + [kenzojob]
+    Seems I'm filling in for you today
+    -> lake_start
+ + [drugsdelivered]
+    I delivered drugs for the first time tonight
+    Still feels weird, that you used to do this
+    -> lake_start
+ + [kenzoopinion]
+    I wonder if you would've agreed with him
+    -> lake_start
+ + [park]
+    The park is spooky at night, don't ya think?
     -> lake_start
 
  // LOCATIONS

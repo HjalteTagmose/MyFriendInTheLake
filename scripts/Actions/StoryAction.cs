@@ -18,7 +18,10 @@ public partial class StoryAction : Panel
 
 	public override bool _CanDropData(Vector2 atPosition, Variant data)
 	{
-		var item = data.As<Item>();
+		if(data.As<Draggable>() is InventoryBackground)
+			return true;
+		
+		var item = data.As<Item>(); 
 		var bubble = (BubbleType)(type+1);
 		string previewText = "N/A";
 
