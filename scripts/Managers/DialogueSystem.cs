@@ -20,6 +20,7 @@ public partial class DialogueSystem : Node
 		story.BindExternalFunction("show_char", (string name) => LocationManager.Instance.ShowCharacter(name));
 		story.BindExternalFunction("hide_char", (string name) => LocationManager.Instance.HideCharacter(name));
 		story.BindExternalFunction("set_line_type", (string type) => StoryController.Instance.SetLineType(type));
+		story.BindExternalFunction("load_start", () => GetTree().ChangeSceneToFile("res://start.tscn"));
 	}
 
 	public override void _Process(double delta)

@@ -10,6 +10,7 @@ public partial class InventoryBackground : Draggable
 		base._Ready();
 		ZIndex = 0;
 		overlay.ZIndex = 999;
+		Zoom(-0.1f);
 	}
 
 	public override void _Process(double delta)

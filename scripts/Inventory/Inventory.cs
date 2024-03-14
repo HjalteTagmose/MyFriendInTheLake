@@ -37,6 +37,12 @@ public partial class Inventory : Panel
 
 	public void HideItem(string name)
 	{
+		if (name == "all")
+		{
+			foreach(var itm in items)
+				itm.Hide();
+		}
+
 		if (TryGetItem(name, out Item item))
 			item.Hide();
 	}

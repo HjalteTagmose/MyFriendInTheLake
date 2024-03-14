@@ -12,6 +12,16 @@ EXTERNAL hide_item(name)
 EXTERNAL show_char(name)
 EXTERNAL hide_char(name)
 EXTERNAL set_line_type(type)
+EXTERNAL load_start()
+
+~ intro = true
+~ delivered_drugs = false
+~ received_drugs = false
+~ do_city_intro = true
+~ do_park_intro = true
+~ do_lake_intro = true
+~ do_office_intro = true
+~ kenzo_knows_about_tony = false
 
 -> lake_intro
 
@@ -357,9 +367,18 @@ So why don't you tell me about your career ambitions?
  + [unknown]
     Not sure I get your point, kid
     -> tony_start
+ + [taketonyjob]
+    You made the right choice, kid!
+    -> go_to_start
+ + [refusetonyjob]
+    -> refuse_job
  + [vladjob]
-    ASJFDOISD JIOAS DJOIASDJ IOASJD IOASOI DJASIO DJIAOS JDIOASJD OIASJD IOJASOID JASIOD JOIASJ D
+    So you're interested! 
+    You're mainly gonna be delivering like you're already doing
+    But much more often and higher quantaties too
+    Are you up for it?
     ~ show_item("taketonyjob")
+    ~ show_item("refusetonyjob")
     ~ show_item("whyhireme")
     -> tony_start
  + [whyhireme]
@@ -369,8 +388,6 @@ So why don't you tell me about your career ambitions?
     We're simply absorbing their workforce and taking over their responsibilities
     But if they don't submit, things could get ugly
     ~ show_item("tonythreat")
-    -> tony_start
- + [taketonyjob]
     -> tony_start
  + [frank] 
     Oh yes, tragic
@@ -460,11 +477,63 @@ So why don't you tell me about your career ambitions?
 // tonythreat
 // whyhireme
 // taketonyjob
+// refusetonyjob
 
 //We'd like to see that operation cease
 
 
-
+=== refuse_job ===
+You're making a mistake kid
+Who do you think killed your friend, huh?
+~ hide_item("all")
+~ show_item("kenzo")
+~ show_item("tony")
+~ show_item("frank")
+~ show_item("vlad")
+~ show_item("taketonyjob")
+~ show_item("refusetonyjob")
+* [kenzo]
+    Hah, he barely noticed half his crew missing
+    Last chance
+    -> last_chance
+* [vlad]
+    Why? Because Kenzo called him a freak? 
+    Maybe you should stop being so judgmental
+    yeah
+    I think you two should spend more time together
+    ~ hide_char("tony")
+    ~ show_char("vlad")
+    Let's take a walk
+    -> go_to_start
+* [tony]
+    Me?!
+    Vlad, why don't you tell him how we feel about ungratefulness?
+    ~ hide_char("tony")
+    ~ show_char("vlad")
+    Let's take a walk
+    -> go_to_start
+* [frank]
+    Yeah, he committed suicide 
+    Just like you
+    ~ hide_char("tony")
+    ~ show_char("vlad")
+    Let's take a walk
+    -> go_to_start
+    
+=== last_chance === 
++ [taketonyjob]
+    You made the right choice, kid!
+    -> go_to_start
++ [refusetonyjob]
+    What a shame...
+    ~ hide_char("tony")
+    ~ show_char("vlad")
+    Let's go talk to Frank
+    -> go_to_start
+    
+=== go_to_start ===
+~ load_start()
+-> END
 
 
 

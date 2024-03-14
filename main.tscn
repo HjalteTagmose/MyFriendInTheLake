@@ -220,10 +220,10 @@ Leave = "Go to Tony's"
 
 [node name="FrankDebt" parent="UI/Inventory/Background" instance=ExtResource("8_s3ip1")]
 layout_mode = 0
-offset_left = 199.0
-offset_top = 814.0
-offset_right = 633.0
-offset_bottom = 928.0
+offset_left = 869.0
+offset_top = 1053.0
+offset_right = 1303.0
+offset_bottom = 1167.0
 mouse_default_cursor_shape = 2
 Option = "frankdebt"
 Question = "Frank is in debt?"
@@ -235,10 +235,10 @@ text = "Frank owes kenzo money"
 
 [node name="KenzoJob" parent="UI/Inventory/Background" instance=ExtResource("8_s3ip1")]
 layout_mode = 0
-offset_left = 285.0
-offset_top = 618.0
-offset_right = 719.0
-offset_bottom = 732.0
+offset_left = 890.0
+offset_top = 830.0
+offset_right = 1324.0
+offset_bottom = 944.0
 mouse_default_cursor_shape = 2
 Option = "kenzojob"
 Question = "What did you want me to do?"
@@ -375,10 +375,10 @@ Leave = ""
 [node name="Napkin" type="Panel" parent="UI/Inventory/Background"]
 custom_minimum_size = Vector2(338, 322)
 layout_mode = 0
-offset_left = 973.0
-offset_top = 1094.0
-offset_right = 1311.0
-offset_bottom = 1416.0
+offset_left = 968.0
+offset_top = 1251.0
+offset_right = 1306.0
+offset_bottom = 1573.0
 mouse_default_cursor_shape = 2
 theme = ExtResource("7_kb40a")
 theme_override_styles/panel = SubResource("StyleBoxTexture_yyh7g")
@@ -436,36 +436,6 @@ Leave = ""
 [node name="Label" parent="UI/Inventory/Background/FrankSuicide" index="0"]
 text = "Frank committed suicide?"
 
-[node name="TakeTonyJob" parent="UI/Inventory/Background" instance=ExtResource("8_s3ip1")]
-layout_mode = 0
-offset_left = 635.0
-offset_top = 1114.0
-offset_right = 1069.0
-offset_bottom = 1228.0
-mouse_default_cursor_shape = 2
-Option = "taketonyjob"
-Question = "I'll take the job (no going back)"
-Thought = "If you can't beat 'em, join 'em"
-Leave = "v"
-
-[node name="Label" parent="UI/Inventory/Background/TakeTonyJob" index="0"]
-text = "Take tony's offer"
-
-[node name="WhyHireMe" parent="UI/Inventory/Background" instance=ExtResource("9_so4vm")]
-layout_mode = 0
-offset_left = 730.0
-offset_top = 1064.0
-offset_right = 1061.01
-offset_bottom = 1197.0
-mouse_default_cursor_shape = 2
-Option = "whyhireme"
-Question = "Why hire me?"
-Thought = "What does he want with me?"
-Leave = ""
-
-[node name="Label" parent="UI/Inventory/Background/WhyHireMe" index="0"]
-text = "Why hire me?"
-
 [node name="TonyThreat" parent="UI/Inventory/Background" instance=ExtResource("9_so4vm")]
 layout_mode = 0
 offset_left = 995.0
@@ -480,6 +450,111 @@ Leave = ""
 
 [node name="Label" parent="UI/Inventory/Background/TonyThreat" index="0"]
 text = "Is tony threatening me?"
+
+[node name="vlad" parent="UI/Inventory/Background" instance=ExtResource("8_s3ip1")]
+layout_mode = 0
+offset_left = 275.0
+offset_top = 965.0
+offset_right = 709.0
+offset_bottom = 1079.0
+mouse_default_cursor_shape = 2
+Option = "vlad"
+Question = "Vlad did it"
+Thought = "Vlad did it"
+Leave = ""
+
+[node name="Label" parent="UI/Inventory/Background/vlad" index="0"]
+text = "Vlad"
+
+[node name="tony" parent="UI/Inventory/Background" instance=ExtResource("8_s3ip1")]
+layout_mode = 0
+offset_left = 731.0
+offset_top = 952.0
+offset_right = 1165.0
+offset_bottom = 1066.0
+mouse_default_cursor_shape = 2
+Option = "tony"
+Question = "You did it!"
+Thought = "Tony did it!"
+Leave = ""
+
+[node name="Label" parent="UI/Inventory/Background/tony" index="0"]
+text = "You"
+
+[node name="frank" parent="UI/Inventory/Background" instance=ExtResource("8_s3ip1")]
+layout_mode = 0
+offset_left = 522.0
+offset_top = 1090.0
+offset_right = 956.0
+offset_bottom = 1204.0
+mouse_default_cursor_shape = 2
+Option = "frank"
+Question = "It was suicide"
+Thought = "It was suicide"
+Leave = ""
+
+[node name="Label" parent="UI/Inventory/Background/frank" index="0"]
+text = "Frank"
+
+[node name="kenzo" parent="UI/Inventory/Background" instance=ExtResource("8_s3ip1")]
+layout_mode = 0
+offset_left = 486.0
+offset_top = 841.0
+offset_right = 920.0
+offset_bottom = 955.0
+mouse_default_cursor_shape = 2
+Option = "kenzo"
+Question = "Kenzo did it"
+Thought = "Kenzo did it"
+Leave = ""
+
+[node name="Label" parent="UI/Inventory/Background/kenzo" index="0"]
+text = "Kenzo"
+
+[node name="TakeTonyJob" parent="UI/Inventory/Background" instance=ExtResource("8_s3ip1")]
+layout_mode = 0
+offset_left = 378.0
+offset_top = 723.0
+offset_right = 812.0
+offset_bottom = 837.0
+mouse_default_cursor_shape = 2
+Option = "taketonyjob"
+Question = "I'll take the job (no going back)"
+Thought = "If you can't beat 'em, join 'em"
+Leave = "v"
+
+[node name="Label" parent="UI/Inventory/Background/TakeTonyJob" index="0"]
+text = "Take tony's offer"
+
+[node name="RefuseTonyJob" parent="UI/Inventory/Background" instance=ExtResource("8_s3ip1")]
+layout_mode = 0
+offset_left = 819.0
+offset_top = 710.0
+offset_right = 1253.0
+offset_bottom = 824.0
+mouse_default_cursor_shape = 2
+Option = "refusetonyjob"
+Question = "I wont take the job (no going back)"
+Thought = "Fuck these guys!"
+Leave = ""
+
+[node name="Label" parent="UI/Inventory/Background/RefuseTonyJob" index="0"]
+text = "Refuse tony's offer"
+
+[node name="WhyHireMe" parent="UI/Inventory/Background" instance=ExtResource("9_so4vm")]
+layout_mode = 0
+offset_left = 642.0
+offset_top = 618.0
+offset_right = 973.005
+offset_bottom = 751.0
+mouse_default_cursor_shape = 2
+Option = "whyhireme"
+Question = "Why hire me?"
+Thought = "What does he want with me?"
+Leave = ""
+
+[node name="Label" parent="UI/Inventory/Background/WhyHireMe" index="0"]
+text = "Why hire me?"
 
 [node name="Overlay" type="Panel" parent="UI/Inventory/Background"]
 visible = false
@@ -744,6 +819,11 @@ theme_override_styles/panel = SubResource("StyleBoxTexture_jgldo")
 [editable path="UI/Inventory/Background/KenzoOpinion"]
 [editable path="UI/Inventory/Background/FrankTroubled"]
 [editable path="UI/Inventory/Background/FrankSuicide"]
-[editable path="UI/Inventory/Background/TakeTonyJob"]
-[editable path="UI/Inventory/Background/WhyHireMe"]
 [editable path="UI/Inventory/Background/TonyThreat"]
+[editable path="UI/Inventory/Background/vlad"]
+[editable path="UI/Inventory/Background/tony"]
+[editable path="UI/Inventory/Background/frank"]
+[editable path="UI/Inventory/Background/kenzo"]
+[editable path="UI/Inventory/Background/TakeTonyJob"]
+[editable path="UI/Inventory/Background/RefuseTonyJob"]
+[editable path="UI/Inventory/Background/WhyHireMe"]
