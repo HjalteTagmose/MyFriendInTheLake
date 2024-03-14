@@ -5,6 +5,7 @@ VAR do_city_intro = true
 VAR do_park_intro = true
 VAR do_lake_intro = true
 VAR do_office_intro = true
+VAR kenzo_knows_about_tony = false
 
 EXTERNAL show_item(name)
 EXTERNAL hide_item(name)
@@ -22,7 +23,7 @@ EXTERNAL set_line_type(type)
 {
 - do_lake_intro:
 ~ show_item("portrait")
-~ show_item("tonynote") // TEST
+ée
 Oh Frank, you really messed up this time
 You just had to leave for a moment, yet you never came back
 I still have the name of the bar where we were supposed to meet
@@ -172,6 +173,30 @@ Don't I know you?
     So you better get going
     }
     -> kenzo_start
+ + [vladjob]
+    {
+    - kenzo_knows_about_tony:
+    The job with Tony
+    They'll fuck you over first chance they get
+    It's not worth it 
+    - else:
+    Did he say what kind of job?
+    I can't imagine he has a dog for you to walk...
+    You need to tell me if he's trying to steal our business
+    I wonder if he got Frank already...
+    }
+    -> kenzo_start
+ + [tonynote]
+    ~ kenzo_knows_about_tony = true
+    Tony?
+    You got this from Vlad?
+    Fucking turncoat piece of shit!
+    ...
+    -> kenzo_start
+ + [vladtookmoney]
+    Why would you give him your money?
+    He'll never give it back, trust me
+    -> kenzo_start
  + [drugsdelivered]
     Good job
     Thanks for filling in
@@ -182,10 +207,15 @@ Don't I know you?
     What? Not enough for you?
     Too bad!
     -> kenzo_start
+ + [harukiya]
+    You can always find me here
+    -> kenzo_start
+    
  // LOCATIONS
  + [loc_park] -> vlad_intro
  + [loc_lake] -> lake_intro
  + [loc_office] -> tony_intro
+
 
 
 
@@ -227,6 +257,10 @@ Hey man, what you need?
     I guess Frank couldn't hack it
     ~ show_item("drugsdelivered")
     -> vlad_start
+ + [harukiya]
+    That's the club where Kenzo hangs out
+    Not really my style
+    -> vlad_start
  + [cold]
     I got stuff, that'll make you feel like you're on the beach
     -> vlad_start
@@ -239,6 +273,10 @@ Hey man, what you need?
     - else:
     I don't know who that is
     }
+    -> vlad_start
+ + [frankdebt]
+    He owed me at least a grand
+    We're even now though
     -> vlad_start
  + [money]
     That's what Kenzo paid you? Hah!
@@ -263,6 +301,20 @@ Hey man, what you need?
     He can think what he wants
     He won't be around much longer 
     -> vlad_start
+ + [lake]
+    It's pretty close to here 
+    -> vlad_start
+ + [drugsdelivered]
+    Yeah, you did..
+    Do you want a fucking medal or something?
+    -> vlad_start
+ + [vladjob]
+    Ok, here's the address
+    ~ show_item("tonynote")
+    I'll call and let them know you're coming
+    Go there now
+    Don't tell anyone about it
+    -> vlad_start
 
  // LOCATIONS
  + [loc_city] -> kenzo_intro
@@ -286,7 +338,8 @@ Hey man, what you need?
 ~ intro = true
 ~ set_line_type("story")
 You get to the address Vlad wrote for you
-Immediately you're approached by a man who seems to have been anticipating you
+Immediately you're approached by a man 
+He seems to have been anticipating you
 He escorts you into a nearby building 
 and before you know it, you're stuffed into a small smoke-filled room
 }
@@ -302,10 +355,111 @@ So why don't you tell me about your career ambitions?
 
 === tony_start ===
  + [unknown]
-    Not sure, I get your point, kid
+    Not sure I get your point, kid
     -> tony_start
+ + [vladjob]
+    ASJFDOISD JIOAS DJOIASDJ IOASJD IOASOI DJASIO DJIAOS JDIOASJD OIASJD IOJASOID JASIOD JOIASJ D
+    ~ show_item("taketonyjob")
+    ~ show_item("whyhireme")
+    -> tony_start
+ + [whyhireme]
+    Okay, I'll level with you, kid
+    Your friend Kenzo and his possé?
+    Amateurs
+    We're simply absorbing their workforce and taking over their responsibilities
+    But if they don't submit, things could get ugly
+    ~ show_item("tonythreat")
+    -> tony_start
+ + [taketonyjob]
+    -> tony_start
+ + [frank] 
+    Oh yes, tragic
+    He was a troubled kid
+    ~ show_item("franktroubled")
+    -> tony_start
+ + [franktroubled]
+    Oh yes
+    We just found him in the lake
+    He must've taken his own life
+    That or Kenzo got tired of waiting for his money
+    ~ show_item("franksuicide")
+    -> tony_start
+ + [franksuicide]
+    That or Kenzo
+    Not something you wanna get mixed up in
+    Best to stick with us
+    We take care of our own 
+    ~ show_item("whyhireme")
+    -> tony_start
+ + [drugs]
+    So you have experience hauling drugs
+    That's what we need
+    ~ show_item("whyhireme")
+    -> tony_start
+ + [harukiya]
+    I know that bar, kid
+    You don't wanna hang out with those people
+    Take a job with me instead
+    I'll make sure you're taken care off
+    ~ show_item("whyhireme")
+    -> tony_start
+ + [money]
+    You can keep that one, kid
+    And I'll make sure you get plenty more if you work for me
+    ~ show_item("whyhireme")
+    -> tony_start
+ + [kenzoopinion]
+    Kenzo is very unprofessional
+    No doubt you've noticed
+    ~ show_item("whyhireme")
+    -> tony_start
+ + [kenzojob]
+    Trust me you don't want to work with him
+    It never ends well
+    Just look what happened to our dear Frank
+    You don't want to end up like that
+    ~ show_item("tonythreat")
+    -> tony_start
+ + [cold]
+    We don't have to do small talk about the weather
+    -> tony_start
+ + [lake]
+    The lake is awful cold and awful deep
+    ~ show_item("tonythreat")
+    -> tony_start
+ + [park]
+    That's Vlad's spot
+    We can get you a spot, if you'd like
+    ~ show_item("whyhireme")
+    -> tony_start
+ + [drugsdelivered]
+    Vlad told me
+    We have our own deliveries, that need to be made
+    Maybe you're interested in some extra work?
+    ~ show_item("whyhireme")
+    -> tony_start
+ + [vladtookmoney]
+    He's a stickler isn't he
+    Here. I'll reimburse you as a sign of good faith
+    ~ show_item("money")
+    -> tony_start
+ + [frankdebt]
+    It's true. He was in over his head.
+    I would've forgiven him, but I guess he couldn't forgive himself
+    -> tony_start
+ + [tonynote]
+    That's my info
+    Hold on to that
+    -> tony_start
+ + [tonythreat]
+    I would never!
+    But I highly encourage you to take my offer
+    -> tony_start
+    
 
-
+// tonythreat
+// whyhireme
+// taketonyjob
 
 //We'd like to see that operation cease
 

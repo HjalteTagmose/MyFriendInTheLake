@@ -213,7 +213,7 @@ theme = ExtResource("7_kb40a")
 theme_override_styles/panel = SubResource("StyleBoxTexture_ucdoe")
 script = ExtResource("6_ms88t")
 CanLeave = true
-Option = "office"
+Option = "tonynote"
 Question = "Tony?"
 Thought = "This is in the nice part of town"
 Leave = "Go to Tony's"
@@ -405,6 +405,81 @@ Option = "drugs"
 Question = "Do you want some drugs?"
 Thought = "It makes me uncomfortable"
 Leave = ""
+
+[node name="FrankTroubled" parent="UI/Inventory/Background" instance=ExtResource("8_s3ip1")]
+layout_mode = 0
+offset_left = 199.0
+offset_top = 814.0
+offset_right = 633.0
+offset_bottom = 928.0
+mouse_default_cursor_shape = 2
+Option = "franktroubled"
+Question = "Frank was troubled?"
+Thought = "He wasn't troubled! He was fine!"
+Leave = ""
+
+[node name="Label" parent="UI/Inventory/Background/FrankTroubled" index="0"]
+text = "Frank was troubled?"
+
+[node name="FrankSuicide" parent="UI/Inventory/Background" instance=ExtResource("8_s3ip1")]
+layout_mode = 0
+offset_left = 219.0
+offset_top = 1102.0
+offset_right = 653.0
+offset_bottom = 1216.0
+mouse_default_cursor_shape = 2
+Option = "franksuicide"
+Question = "Frank commited suicide"
+Thought = "Frank would never commit suicide! This is a lie!"
+Leave = ""
+
+[node name="Label" parent="UI/Inventory/Background/FrankSuicide" index="0"]
+text = "Frank committed suicide?"
+
+[node name="TakeTonyJob" parent="UI/Inventory/Background" instance=ExtResource("8_s3ip1")]
+layout_mode = 0
+offset_left = 635.0
+offset_top = 1114.0
+offset_right = 1069.0
+offset_bottom = 1228.0
+mouse_default_cursor_shape = 2
+Option = "taketonyjob"
+Question = "I'll take the job (no going back)"
+Thought = "If you can't beat 'em, join 'em"
+Leave = "v"
+
+[node name="Label" parent="UI/Inventory/Background/TakeTonyJob" index="0"]
+text = "Take tony's offer"
+
+[node name="WhyHireMe" parent="UI/Inventory/Background" instance=ExtResource("9_so4vm")]
+layout_mode = 0
+offset_left = 730.0
+offset_top = 1064.0
+offset_right = 1061.01
+offset_bottom = 1197.0
+mouse_default_cursor_shape = 2
+Option = "whyhireme"
+Question = "Why hire me?"
+Thought = "What does he want with me?"
+Leave = ""
+
+[node name="Label" parent="UI/Inventory/Background/WhyHireMe" index="0"]
+text = "Why hire me?"
+
+[node name="TonyThreat" parent="UI/Inventory/Background" instance=ExtResource("9_so4vm")]
+layout_mode = 0
+offset_left = 995.0
+offset_top = 933.0
+offset_right = 1326.01
+offset_bottom = 1066.0
+mouse_default_cursor_shape = 2
+Option = "tonythreat"
+Question = "Is that a threat?"
+Thought = "Is he threatening me?"
+Leave = ""
+
+[node name="Label" parent="UI/Inventory/Background/TonyThreat" index="0"]
+text = "Is tony threatening me?"
 
 [node name="Overlay" type="Panel" parent="UI/Inventory/Background"]
 visible = false
@@ -667,3 +742,8 @@ theme_override_styles/panel = SubResource("StyleBoxTexture_jgldo")
 [editable path="UI/Inventory/Background/Lake"]
 [editable path="UI/Inventory/Background/Cold"]
 [editable path="UI/Inventory/Background/KenzoOpinion"]
+[editable path="UI/Inventory/Background/FrankTroubled"]
+[editable path="UI/Inventory/Background/FrankSuicide"]
+[editable path="UI/Inventory/Background/TakeTonyJob"]
+[editable path="UI/Inventory/Background/WhyHireMe"]
+[editable path="UI/Inventory/Background/TonyThreat"]

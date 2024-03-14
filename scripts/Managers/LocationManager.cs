@@ -41,6 +41,7 @@ public partial class LocationManager : Node
 				lake.Show();
 				StoryController.Instance.PickOption("loc_lake");
 				break;
+			case "tonynote":
 			case "office":
 				office.Show();
 				StoryController.Instance.PickOption("loc_office");
