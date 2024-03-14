@@ -52,4 +52,14 @@ public partial class StoryController : Node
 		previewSpeechBubble.Show();
 		previewSpeechBubble.Say(text);
 	}
+
+	public void SetLineType(string type)
+	{
+		switch(type)
+		{
+			case "story" : npcSpeechBubble.UpdateVisual(BubbleType.STORY) ; break;
+			case "speech": npcSpeechBubble.UpdateVisual(BubbleType.SPEECH); break;
+			default: return;
+		}
+	}
 }

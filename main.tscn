@@ -207,10 +207,54 @@ Leave = ""
 [node name="Label" parent="UI/Inventory/Background/KenzoJob" index="0"]
 text = "Kenzo has a job for you"
 
+[node name="VladJob" parent="UI/Inventory/Background" instance=ExtResource("8_s3ip1")]
+layout_mode = 0
+offset_left = 417.0
+offset_top = 506.0
+offset_right = 851.0
+offset_bottom = 620.0
+Option = "vladjob"
+Question = "Something about a job?"
+Thought = "Everyone is hiring it seems"
+Leave = ""
+
+[node name="Label" parent="UI/Inventory/Background/VladJob" index="0"]
+text = "Vlad Job Opportunity "
+
+[node name="VladTookMoney" parent="UI/Inventory/Background" instance=ExtResource("8_s3ip1")]
+layout_mode = 0
+offset_left = 1205.0
+offset_top = 1456.0
+offset_right = 1639.0
+offset_bottom = 1570.0
+Option = "vladtookmoney"
+Question = "Took my money!"
+Thought = "I can't believe he took my money"
+Leave = ""
+
+[node name="Label" parent="UI/Inventory/Background/VladTookMoney" index="0"]
+text = "Vlad took your money"
+
+[node name="DrugsDelivered" parent="UI/Inventory/Background" instance=ExtResource("8_s3ip1")]
+layout_mode = 0
+offset_left = 255.0
+offset_top = 648.0
+offset_right = 689.0
+offset_bottom = 762.0
+Option = "drugsdelivered"
+Question = "I delivered the stuff"
+Thought = "I delivered the stuff"
+Leave = ""
+
+[node name="Label" parent="UI/Inventory/Background/DrugsDelivered" index="0"]
+text = "Drugs Delivered"
+
 [node name="Lake" parent="UI/Inventory/Background" instance=ExtResource("8_s3ip1")]
 layout_mode = 0
 offset_left = 473.82
+offset_top = 0.0
 offset_right = 907.82
+offset_bottom = 114.0
 CanLeave = true
 Option = "lake"
 Question = "The lake"
@@ -411,7 +455,6 @@ grow_vertical = 1
 type = 1
 
 [node name="SpeechBubble" parent="UI/Story" instance=ExtResource("5_tao48")]
-visible = false
 layout_mode = 0
 anchors_preset = 0
 anchor_left = 0.0
@@ -424,6 +467,7 @@ offset_right = 830.0
 offset_bottom = 382.0
 grow_horizontal = 1
 grow_vertical = 1
+storyPos = Vector2(45, 852)
 
 [node name="Actions" type="Panel" parent="UI/Story" node_paths=PackedStringArray("preview")]
 custom_minimum_size = Vector2(0, 200)
@@ -540,6 +584,9 @@ theme_override_styles/panel = SubResource("StyleBoxTexture_jgldo")
 [editable path="UI/Inventory/Background/Park"]
 [editable path="UI/Inventory/Background/FrankDebt"]
 [editable path="UI/Inventory/Background/KenzoJob"]
+[editable path="UI/Inventory/Background/VladJob"]
+[editable path="UI/Inventory/Background/VladTookMoney"]
+[editable path="UI/Inventory/Background/DrugsDelivered"]
 [editable path="UI/Inventory/Background/Lake"]
 [editable path="UI/Inventory/Background/Cold"]
 [editable path="UI/Inventory/Background/KenzoOpinion"]

@@ -1,11 +1,15 @@
 VAR intro = true
 VAR delivered_drugs = false
 VAR received_drugs = false
+VAR do_city_intro = true
+VAR do_park_intro = true
+VAR do_lake_intro = true
 
 EXTERNAL show_item(name)
 EXTERNAL hide_item(name)
 EXTERNAL show_char(name)
 EXTERNAL hide_char(name)
+EXTERNAL set_line_type(type)
 
 -> lake_intro
 
@@ -13,17 +17,24 @@ EXTERNAL hide_char(name)
 // LAKE     LAKE    LAKE    LAKE
 //
 === lake_intro ===
+~ set_line_type("story")
+{
+- do_park_intro:
 ~ show_item("portrait")
 Oh Frank, you really messed up this time
 You just had to leave for a moment, yet you never came back
 I still have the name of the bar where we were supposed to meet
 ~ show_item("napkin")
+~ show_item("lake")
 Maybe next time
-
+}
+~ do_lake_intro = false
 -> lake_start
 
 === lake_start ===
 ~ intro = false
+~ do_lake_intro = false
+~ set_line_type("story")
  + [unknown] 
     I don't know what this has to do with anything
     -> lake_start
@@ -65,20 +76,30 @@ Maybe next time
 // KENZO    KENZO   KENZO   KENZO 
 //
 === kenzo_intro ===
+{
+- do_city_intro:
 ~ intro = true
+~ set_line_type("story")
 Neverending housing blocks steal your view of the sky
-A small sign labeled B1 marks your location
 The streets are desolate, but you hear muffled noises from the entrance
 A bonechilling cold hits you 
 ~ show_item("cold")
 It's honestly a miracle, you found this place
 As you walk up to the entrance, a guy spots you and comes over
+~ set_line_type("speech")
 ~ show_char("kenzo")
 Don't I know you?
+}
+
+~ do_city_intro = false
+~ set_line_type("speech")
+~ show_char("kenzo")
+
 -> kenzo_start
 
 === kenzo_start ===
 ~ intro = false
+~ set_line_type("speech")
  + [unknown]
     Huh?
     -> kenzo_start
@@ -128,6 +149,16 @@ Don't I know you?
     So you better get going
     }
     -> kenzo_start
+ + [drugsdelivered]
+    Good job
+    Thanks for filling in
+    Here's your cut
+    ~ show_item("money")
+    -> kenzo_start
+ + [money]
+    What? Not enough for you?
+    Too bad!
+    -> kenzo_start
  // LOCATIONS
  + [loc_park] -> vlad_intro
  + [loc_lake] -> lake_intro
@@ -144,24 +175,33 @@ Don't I know you?
 // VLAD     VLAD    VLAD    VLAD
 //
 === vlad_intro ===
+{
+- do_park_intro:
 ~ intro = true
+~ set_line_type("story")
 It's almost completely dark at this point
 The rustling of leaves and apparent desolation leaves you with an eerie feeling
 ...
 Then, as if out of nowhere, a figure appears
-~show_char("vlad")
+}
+
+~ do_park_intro = false
+~ set_line_type("speech")
+~ show_char("vlad")
+~ intro = false
 Hey man, what you need?
 -> vlad_start
 
 === vlad_start ===
-~ intro = false
  + [unknown]
     What are you talking about?
      -> vlad_start
  + [drugs]
-    ~delivered_drugs = true
+    ~ hide_item("drugs")
+    ~ delivered_drugs = true
     You're the new delivery boy then?
     I guess Frank couldn't hack it
+    ~ show_item("drugsdelivered")
     -> vlad_start
  + [cold]
     I got stuff, that'll make you feel like you're on the beach
@@ -175,6 +215,29 @@ Hey man, what you need?
     - else:
     I don't know who that is
     }
+    -> vlad_start
+ + [money]
+    That's what Kenzo paid you? Hah!
+    Tell me if you need a real job, I know a guy
+    ~ show_item("vladjob")
+    ~ set_line_type("story")
+    Vlad quietly pockets the money
+    ~ set_line_type("speech")
+    ~ show_item("vladtookmoney")
+    ~ hide_item("money")
+    -> vlad_start
+ + [vladtookmoney]
+    That's for making me wait 
+    -> vlad_start
+ + [kenzojob]
+    I figured he did 
+    Bet he pays shit too
+    Tell me if you need more work, I know a guy
+    ~ show_item("vladjob")
+    -> vlad_start
+ + [kenzoopinion]
+    He can think what he wants
+    He won't be around much longer 
     -> vlad_start
 
  // LOCATIONS

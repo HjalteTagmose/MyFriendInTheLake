@@ -19,6 +19,7 @@ public partial class DialogueSystem : Node
 		story.BindExternalFunction("hide_item", (string name) => inventory.HideItem(name));
 		story.BindExternalFunction("show_char", (string name) => LocationManager.Instance.ShowCharacter(name));
 		story.BindExternalFunction("hide_char", (string name) => LocationManager.Instance.HideCharacter(name));
+		story.BindExternalFunction("set_line_type", (string type) => StoryController.Instance.SetLineType(type));
 	}
 
 	public override void _Process(double delta)
