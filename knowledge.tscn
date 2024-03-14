@@ -1,0 +1,34 @@
+[gd_scene load_steps=6 format=3 uid="uid://cqxr0y3e28dqk"]
+
+[ext_resource type="Theme" uid="uid://c0ifn6jgsmbgv" path="res://themes/theme.tres" id="1_jexbe"]
+[ext_resource type="Texture2D" uid="uid://cab0e7ak5dymo" path="res://sprites/inventory/knowledge.png" id="2_q4fqm"]
+[ext_resource type="Script" path="res://scripts/Inventory/Item.cs" id="3_dyetv"]
+[ext_resource type="Script" path="res://scripts/ResizableLabel.cs" id="4_d6ep0"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_hkk3o"]
+texture = ExtResource("2_q4fqm")
+
+[node name="Knowledge" type="Panel"]
+custom_minimum_size = Vector2(100, 100)
+offset_left = 471.0
+offset_top = 1121.0
+offset_right = 905.0
+offset_bottom = 1235.0
+theme = ExtResource("1_jexbe")
+theme_override_styles/panel = SubResource("StyleBoxTexture_hkk3o")
+script = ExtResource("3_dyetv")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.04
+anchor_right = 0.95
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Lorem ipsum Lorem ipsum Lorem ipsum "
+horizontal_alignment = 1
+vertical_alignment = 1
+clip_text = true
+script = ExtResource("4_d6ep0")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=52 format=3 uid="uid://roxthgw71bi6"]
+[gd_scene load_steps=51 format=3 uid="uid://roxthgw71bi6"]
 
 [ext_resource type="Resource" uid="uid://bulreogc3l6jq" path="res://story/main.ink" id="2_1ep76"]
 [ext_resource type="Texture2D" uid="uid://cxc3ck2jjakoh" path="res://sprites/characters/vlad.png" id="2_4o28k"]
@@ -12,20 +12,20 @@
 [ext_resource type="Theme" uid="uid://c0ifn6jgsmbgv" path="res://themes/theme.tres" id="7_kb40a"]
 [ext_resource type="Texture2D" uid="uid://hi6o61a6glq4" path="res://sprites/areas/park1.png" id="8_goqh2"]
 [ext_resource type="Texture2D" uid="uid://bojpiai20mw14" path="res://sprites/inventory/dots.png" id="8_hmrae"]
+[ext_resource type="PackedScene" uid="uid://cqxr0y3e28dqk" path="res://knowledge.tscn" id="8_s3ip1"]
 [ext_resource type="Texture2D" uid="uid://dq4ujbrs3oica" path="res://sprites/items/polaroid.png" id="9_ou88d"]
+[ext_resource type="PackedScene" uid="uid://bnomb6ppxmje6" path="res://thought.tscn" id="9_so4vm"]
 [ext_resource type="Texture2D" uid="uid://ck1jixkec0y6" path="res://sprites/areas/park2.png" id="9_yfpiv"]
 [ext_resource type="Script" path="res://scripts/Actions/ActionsPanel.cs" id="10_bo17g"]
 [ext_resource type="Texture2D" uid="uid://b0m0mp2e3xme4" path="res://sprites/items/drugs.png" id="10_ka0tu"]
-[ext_resource type="Texture2D" uid="uid://cab0e7ak5dymo" path="res://sprites/inventory/knowledge.png" id="10_nqchj"]
 [ext_resource type="Texture2D" uid="uid://5wnlsftxwwwa" path="res://sprites/inventory/line.png" id="10_y5y2k"]
 [ext_resource type="Script" path="res://scripts/Actions/StoryAction.cs" id="11_c527t"]
 [ext_resource type="Texture2D" uid="uid://dyexdy4fcocjb" path="res://sprites/actions/ask1.png" id="12_0hljw"]
-[ext_resource type="Script" path="res://scripts/ResizableLabel.cs" id="12_hjepd"]
-[ext_resource type="Texture2D" uid="uid://cekf4ni1cxb5" path="res://sprites/inventory/thought.png" id="13_0p2fx"]
 [ext_resource type="Texture2D" uid="uid://bcypee4pp6d7j" path="res://sprites/areas/city1.png" id="13_kya4i"]
 [ext_resource type="Texture2D" uid="uid://boehnfg75klxd" path="res://sprites/actions/ask2.png" id="13_nth7k"]
 [ext_resource type="Texture2D" uid="uid://bl5g6h3ljwl7a" path="res://sprites/areas/city2.png" id="14_8o8ly"]
 [ext_resource type="Texture2D" uid="uid://c4o8unjre3g0v" path="res://sprites/actions/think1.png" id="14_xi1kg"]
+[ext_resource type="Texture2D" uid="uid://firlc8momngm" path="res://sprites/items/napkin.png" id="15_hj5qn"]
 [ext_resource type="Texture2D" uid="uid://cajihc52rvcrm" path="res://sprites/actions/think2.png" id="15_pfdu0"]
 [ext_resource type="Texture2D" uid="uid://bikmicdmd1oir" path="res://sprites/items/money.png" id="15_sotqt"]
 [ext_resource type="Texture2D" uid="uid://bw88u3seg5v4d" path="res://sprites/characters/kenzo.png" id="16_02pnk"]
@@ -41,17 +41,14 @@ texture = ExtResource("8_hmrae")
 axis_stretch_horizontal = 2
 axis_stretch_vertical = 2
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_hkk3o"]
-texture = ExtResource("10_nqchj")
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_klu3x"]
-texture = ExtResource("13_0p2fx")
-
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_iirac"]
 texture = ExtResource("9_ou88d")
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_p25of"]
 texture = ExtResource("15_sotqt")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_yyh7g"]
+texture = ExtResource("15_hj5qn")
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_j5enu"]
 texture = ExtResource("10_ka0tu")
@@ -122,10 +119,11 @@ script = ExtResource("3_tq3fv")
 npcSpeechBubble = NodePath("../UI/Story/SpeechBubble")
 previewSpeechBubble = NodePath("../UI/Story/PreviewBubble")
 
-[node name="LocationManager" type="Node" parent="." node_paths=PackedStringArray("city", "park", "vlad", "kenzo")]
+[node name="LocationManager" type="Node" parent="." node_paths=PackedStringArray("city", "park", "lake", "vlad", "kenzo")]
 script = ExtResource("4_70ipd")
 city = NodePath("../UI/Story/City")
 park = NodePath("../UI/Story/Park")
+lake = NodePath("../UI/Story/Lake")
 vlad = NodePath("../UI/Story/Vlad")
 kenzo = NodePath("../UI/Story/Kenzo")
 
@@ -166,58 +164,47 @@ unparentOnDrag = false
 resetPosOnCancel = false
 useOffset = true
 
-[node name="Knowledge" type="Panel" parent="UI/Inventory/Background"]
-custom_minimum_size = Vector2(100, 100)
+[node name="Park" parent="UI/Inventory/Background" instance=ExtResource("8_s3ip1")]
 layout_mode = 0
-offset_left = 775.0
-offset_top = 1161.0
-offset_right = 1209.0
-offset_bottom = 1275.0
-pivot_offset = Vector2(-788, -454)
-theme = ExtResource("7_kb40a")
-theme_override_styles/panel = SubResource("StyleBoxTexture_hkk3o")
-script = ExtResource("6_ms88t")
+offset_left = 497.0
+offset_top = 1234.0
+offset_right = 931.0
+offset_bottom = 1348.0
+CanLeave = true
+Option = "park"
+Question = "Do you know where the park is?"
+Thought = "Who wants to go to the park at night?"
+Leave = "Go to park"
 
-[node name="Label" type="Label" parent="UI/Inventory/Background/Knowledge"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.04
-anchor_right = 0.95
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-text = "Lorem ipsum Lorem ipsum Lorem ipsum "
-horizontal_alignment = 1
-vertical_alignment = 1
-clip_text = true
-script = ExtResource("12_hjepd")
+[node name="Label" parent="UI/Inventory/Background/Park" index="0"]
+text = "Park"
 
-[node name="Thought" type="Panel" parent="UI/Inventory/Background"]
-custom_minimum_size = Vector2(100, 100)
+[node name="Lake" parent="UI/Inventory/Background" instance=ExtResource("8_s3ip1")]
 layout_mode = 0
-offset_left = 902.0
-offset_top = 431.0
-offset_right = 1233.0
-offset_bottom = 564.0
-theme = ExtResource("7_kb40a")
-theme_override_styles/panel = SubResource("StyleBoxTexture_klu3x")
-script = ExtResource("6_ms88t")
+offset_left = 473.82
+offset_right = 907.82
+CanLeave = true
+Option = "lake"
+Question = "The lake"
+Thought = "The lake where Frank is"
+Leave = "Go to Lake"
 
-[node name="Label" type="Label" parent="UI/Inventory/Background/Thought"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.09
-anchor_right = 0.91
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-text = "Lorem ipsum Lorem ipsum Lorem ipsum "
-horizontal_alignment = 1
-vertical_alignment = 1
-clip_text = true
-script = ExtResource("12_hjepd")
+[node name="Label" parent="UI/Inventory/Background/Lake" index="0"]
+text = "lake"
+
+[node name="Cold" parent="UI/Inventory/Background" instance=ExtResource("9_so4vm")]
+layout_mode = 0
+offset_left = 934.035
+offset_top = 426.415
+offset_right = 1265.04
+offset_bottom = 559.415
+Option = "cold"
+Question = "It's cold outside, huh?"
+Thought = "It's cold"
+Leave = ""
+
+[node name="Label" parent="UI/Inventory/Background/Cold" index="0"]
+text = "cold outside"
 
 [node name="Portrait" type="Panel" parent="UI/Inventory/Background"]
 custom_minimum_size = Vector2(334, 434)
@@ -250,13 +237,30 @@ Question = "20 bucks?"
 Thought = "20 bucks"
 Leave = ""
 
+[node name="Napkin" type="Panel" parent="UI/Inventory/Background"]
+custom_minimum_size = Vector2(338, 322)
+layout_mode = 0
+offset_left = 973.0
+offset_top = 1094.0
+offset_right = 1311.0
+offset_bottom = 1416.0
+theme = ExtResource("7_kb40a")
+theme_override_styles/panel = SubResource("StyleBoxTexture_yyh7g")
+script = ExtResource("6_ms88t")
+scaleWhenDragged = 0.8
+CanLeave = true
+Option = "harukiya"
+Question = "Do you know Harukiya?"
+Thought = "The bar where Frank was supposed to be"
+Leave = "Go to Harukiya"
+
 [node name="Drugs" type="Panel" parent="UI/Inventory/Background"]
 custom_minimum_size = Vector2(293, 231)
 layout_mode = 0
-offset_left = 299.0
-offset_top = 906.0
-offset_right = 592.0
-offset_bottom = 1137.0
+offset_left = 958.0
+offset_top = 674.0
+offset_right = 1251.0
+offset_bottom = 905.0
 theme = ExtResource("7_kb40a")
 theme_override_styles/panel = SubResource("StyleBoxTexture_j5enu")
 script = ExtResource("6_ms88t")
@@ -275,6 +279,7 @@ offset_bottom = 2048.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_esqr7")
 
 [node name="Story" type="Panel" parent="UI"]
+z_index = 1000
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.5
@@ -476,6 +481,7 @@ expand_mode = 3
 stretch_mode = 4
 
 [node name="Divider" type="Panel" parent="UI"]
+z_index = 1001
 custom_minimum_size = Vector2(20, 1080)
 layout_mode = 1
 anchors_preset = 13
@@ -488,3 +494,7 @@ grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(10, 0)
 theme_override_styles/panel = SubResource("StyleBoxTexture_jgldo")
+
+[editable path="UI/Inventory/Background/Park"]
+[editable path="UI/Inventory/Background/Lake"]
+[editable path="UI/Inventory/Background/Cold"]

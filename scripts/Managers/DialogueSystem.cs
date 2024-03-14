@@ -17,6 +17,8 @@ public partial class DialogueSystem : Node
 		base._Ready();
 		story.BindExternalFunction("show_item", (string name) => inventory.ShowItem(name));
 		story.BindExternalFunction("hide_item", (string name) => inventory.HideItem(name));
+		story.BindExternalFunction("show_char", (string name) => LocationManager.Instance.ShowCharacter(name));
+		story.BindExternalFunction("hide_char", (string name) => LocationManager.Instance.HideCharacter(name));
 	}
 
 	public override void _Process(double delta)

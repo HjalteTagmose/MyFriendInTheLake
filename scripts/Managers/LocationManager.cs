@@ -27,22 +27,33 @@ public partial class LocationManager : Node
 
 		switch (name)
 		{
-			case "city": 
+			case "harukiya": 
 				city.Show();
-				kenzo.Show();
-				StoryController.Instance.PickOption("city");
+				StoryController.Instance.PickOption("loc_city");
 				break;
 			case "park": 
 				park.Show();
-				vlad.Show();
-				StoryController.Instance.PickOption("park");
+				StoryController.Instance.PickOption("loc_park");
 				break;
 			case "lake": 
 				lake.Show();
-				StoryController.Instance.PickOption("lake");
+				StoryController.Instance.PickOption("loc_lake");
 				break;
 			default: GD.Print($"No location called {name}"); break;
 		}
 		GD.Print($"Go to {name}");
 	}
+
+	private Control GetCharacter(string name)
+	{
+		switch(name)
+		{
+			case "vlad": return vlad;
+			case "kenzo": return kenzo;
+			default: GD.Print($"No character called {name}"); return null;
+		}
+	}
+
+	public void ShowCharacter(string name) => GetCharacter(name).Show();
+	public void HideCharacter(string name) => GetCharacter(name).Hide();
 }

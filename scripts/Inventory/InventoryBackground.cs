@@ -5,12 +5,20 @@ public partial class InventoryBackground : Draggable
 {
 	[Export] private Control overlay;
 
+	public override void _Ready()
+	{
+		base._Ready();
+		ZIndex = 0;
+		overlay.ZIndex = 999;
+	}
+
 	public override void _Process(double delta)
 	{
 		base._Process(delta);
 
 		bool intro = DialogueSystem.Instance.InIntro;
 		overlay.Visible = intro;
+		MoveChild(overlay, -1);
 	}
 
 	public override void _Input(InputEvent @event)
@@ -47,6 +55,7 @@ public partial class InventoryBackground : Draggable
 		GD.Print("end drag");
 		var item = data.As<Item>();
 		item.StopDrag(atPosition);
+		MoveChild(item, 0);
 	}
 
 	protected override void ClampPosition()

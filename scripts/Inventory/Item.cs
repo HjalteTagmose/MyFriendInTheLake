@@ -11,6 +11,12 @@ public partial class Item : Draggable
 	[Export] public string Thought { get; private set; } = "test thought";
 	[Export] public string Leave { get; private set; } = "test leave";
 
+	public override void _Ready()
+	{
+		base._Ready();
+		ZIndex = 1;
+	}
+
 	public void AskAbout()
 	{
 		GD.Print(Question);
@@ -31,6 +37,7 @@ public partial class Item : Draggable
 	
 	protected override void StartDrag()
 	{
+		ZIndex = 2000;
 		base.StartDrag();
 		draggedItem = this;
 		Scale = Vector2.One * scaleWhenDragged;
@@ -38,6 +45,7 @@ public partial class Item : Draggable
 
 	public override void StopDrag()
 	{
+		ZIndex = 1;
 		base.StopDrag();
 		draggedItem = null;
 		Scale = Vector2.One;
