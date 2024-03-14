@@ -33,7 +33,6 @@ EXTERNAL load_start()
 {
 - do_lake_intro:
 ~ show_item("portrait")
-ée
 Oh Frank, you really messed up this time
 You just had to leave for a moment, yet you never came back
 I still have the name of the bar where we were supposed to meet
@@ -93,7 +92,28 @@ Maybe next time
  + [park]
     The park is spooky at night, don't ya think?
     -> lake_start
-
++ [tonythreat]
+    I feel like Tony is threatening me...
+    Did he threaten you too? 
+    -> lake_start
++ [whyhireme]
+    Tony is trying to hire me for some reason
+    Did he try to hire you too?
+    I guess you said no...
+    -> lake_start
++ [taketonyjob]
+    Should I take Tony's offer? 
+    I don't wanna end up dead
+    But I don't wanna do this
+    What have I gotten myself into...
+    -> lake_start
++ [refusetonyjob]
+    Should I refuse Tony's offer? 
+    I don't wanna end up dead
+    But I don't wanna do this
+    What have I gotten myself into...
+    -> lake_start
+    
  // LOCATIONS
  + [loc_city] -> kenzo_intro
  + [loc_park] -> vlad_intro
@@ -219,6 +239,23 @@ Don't I know you?
     -> kenzo_start
  + [harukiya]
     You can always find me here
+    -> kenzo_start
+ + [tonythreat]
+    It's definitely a threat
+    Never trust Tony
+    He fucks everyone over sooner or later
+    -> kenzo_start
+ + [whyhireme]
+    I'm guessing his trying to poach you away from me
+    I guess he doesn't know you don't usually deliver
+    -> kenzo_start
+ + [taketonyjob]
+    Never trust Tony
+    He fucks everyone over sooner or later
+    -> kenzo_start
+ + [refusetonyjob]
+    Never trust Tony
+    He fucks everyone over sooner or later
     -> kenzo_start
     
  // LOCATIONS
@@ -347,6 +384,19 @@ Hey man, what you need?
     Go there now
     Don't tell anyone about it
     -> vlad_start
+ + [tonythreat]
+    No.
+    But I would take the job
+    -> vlad_start
+ + [whyhireme]
+    Ask Tony about that 
+    -> vlad_start
+ + [taketonyjob]
+    You definitely should take it
+    -> vlad_start
+ + [refusetonyjob]
+    You definitely should take it
+    -> vlad_start
 
  // LOCATIONS
  + [loc_city] -> kenzo_intro
@@ -379,10 +429,10 @@ and before you know it, you're stuffed into a small smoke-filled room
 ~ do_office_intro = false
 ~ set_line_type("speech")
 ~ show_char("tony")
-~ intro = false
 Heya kid
 Vlad tells me you're a distributor for Kenzo
 So why don't you tell me about your career ambitions?
+~ intro = false
 -> tony_start
 
 === tony_start ===
