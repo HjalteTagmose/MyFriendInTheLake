@@ -179,6 +179,34 @@ Leave = "Go to park"
 [node name="Label" parent="UI/Inventory/Background/Park" index="0"]
 text = "Park"
 
+[node name="FrankDebt" parent="UI/Inventory/Background" instance=ExtResource("8_s3ip1")]
+layout_mode = 0
+offset_left = 199.0
+offset_top = 814.0
+offset_right = 633.0
+offset_bottom = 928.0
+Option = "frankdebt"
+Question = "Frank is in debt?"
+Thought = "Frank is in debt"
+Leave = ""
+
+[node name="Label" parent="UI/Inventory/Background/FrankDebt" index="0"]
+text = "Frank owes kenzo money"
+
+[node name="KenzoJob" parent="UI/Inventory/Background" instance=ExtResource("8_s3ip1")]
+layout_mode = 0
+offset_left = 285.0
+offset_top = 618.0
+offset_right = 719.0
+offset_bottom = 732.0
+Option = "kenzojob"
+Question = "What did you want me to do?"
+Thought = "Feels weird to fill in for a dead guy, but I might learn something"
+Leave = ""
+
+[node name="Label" parent="UI/Inventory/Background/KenzoJob" index="0"]
+text = "Kenzo has a job for you"
+
 [node name="Lake" parent="UI/Inventory/Background" instance=ExtResource("8_s3ip1")]
 layout_mode = 0
 offset_left = 473.82
@@ -205,6 +233,20 @@ Leave = ""
 
 [node name="Label" parent="UI/Inventory/Background/Cold" index="0"]
 text = "cold outside"
+
+[node name="KenzoOpinion" parent="UI/Inventory/Background" instance=ExtResource("9_so4vm")]
+layout_mode = 0
+offset_left = 849.0
+offset_top = 510.0
+offset_right = 1180.0
+offset_bottom = 643.0
+Option = "kenzoopinion"
+Question = "A freak?"
+Thought = "I wonder what he did to make him think that"
+Leave = ""
+
+[node name="Label" parent="UI/Inventory/Background/KenzoOpinion" index="0"]
+text = "kenzo thinks vlad is a freak"
 
 [node name="Portrait" type="Panel" parent="UI/Inventory/Background"]
 custom_minimum_size = Vector2(334, 434)
@@ -496,5 +538,8 @@ pivot_offset = Vector2(10, 0)
 theme_override_styles/panel = SubResource("StyleBoxTexture_jgldo")
 
 [editable path="UI/Inventory/Background/Park"]
+[editable path="UI/Inventory/Background/FrankDebt"]
+[editable path="UI/Inventory/Background/KenzoJob"]
 [editable path="UI/Inventory/Background/Lake"]
 [editable path="UI/Inventory/Background/Cold"]
+[editable path="UI/Inventory/Background/KenzoOpinion"]

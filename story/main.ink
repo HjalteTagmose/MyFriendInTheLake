@@ -79,20 +79,55 @@ Don't I know you?
 
 === kenzo_start ===
 ~ intro = false
-~ show_item("park")
  + [unknown]
     Huh?
     -> kenzo_start
  + [drugs]
-    drugs
+    Are you bailing on me? 
+    Just go to the park and find Vlad
     -> kenzo_start
  + [cold]
-    cold
+    It sure is
     -> kenzo_start
  + [frank]
-    frank
+    Oh yeah, you're Frank's friend
+    He hasn't shown up today
+    You tell him, he better show up and start paying off his debts
+    ~ show_item("frankdebt")
+    The boss is pissed
     -> kenzo_start
- 
+ + [frankdebt] 
+    Yea, that dude is flakey as shit
+    I always gotta cover for him, but hey, he gets the job done
+    Or he used to... 
+    Do you maybe wanna help him not get his arms broken
+    and do something for me? 
+    ~ show_item("kenzojob")
+    -> kenzo_start
+ + [kenzojob]
+    I need you to deliver this
+    ~ show_item("drugs")
+    There's a guy in the park waiting for it right now
+    ~ show_item("park")
+    Just look for a creepy dude with a suit
+    Fucker freaks me out, not gonna lie
+    ~ show_item("kenzoopinion")
+    -> kenzo_start
+ + [kenzoopinion]
+    If you knew him like I do, you'd agree
+    -> kenzo_start
+ + [lake]
+    I know of it?
+    -> kenzo_start
+ + [park]
+    {
+    - delivered_drugs:
+    What about it?
+    - else:
+    Yea, that's where Vlad is
+    So you better get going
+    }
+    -> kenzo_start
  // LOCATIONS
  + [loc_park] -> vlad_intro
  + [loc_lake] -> lake_intro
@@ -110,6 +145,11 @@ Don't I know you?
 //
 === vlad_intro ===
 ~ intro = true
+It's almost completely dark at this point
+The rustling of leaves and apparent desolation leaves you with an eerie feeling
+...
+Then, as if out of nowhere, a figure appears
+~show_char("vlad")
 Hey man, what you need?
 -> vlad_start
 
@@ -121,16 +161,16 @@ Hey man, what you need?
  + [drugs]
     ~delivered_drugs = true
     You're the new delivery boy then?
-    I guess Frank couldn't hack it  
+    I guess Frank couldn't hack it
     -> vlad_start
  + [cold]
-    I got stuff, that'll make you feel like you're on the beach.
+    I got stuff, that'll make you feel like you're on the beach
     -> vlad_start
  + [frank]
     {
     - delivered_drugs:
     He delivered to me before you
-    I guess he got out of the game 
+    I guess he got out of the game
     Always seemed like a softy to me anyway
     - else:
     I don't know who that is
