@@ -37,16 +37,16 @@ public partial class Item : Draggable
 	
 	protected override void StartDrag()
 	{
-		ZIndex = 2000;
 		base.StartDrag();
+		ZIndex = 2000;
 		draggedItem = this;
 		Scale = Vector2.One * scaleWhenDragged;
 	}
 
 	public override void StopDrag()
 	{
-		ZIndex = 1;
 		base.StopDrag();
+		ZIndex = 1;
 		draggedItem = null;
 		Scale = Vector2.One;
 	}

@@ -55,7 +55,7 @@ public partial class InventoryBackground : Draggable
 		GD.Print("end drag");
 		var item = data.As<Item>();
 		item.StopDrag(atPosition);
-		MoveChild(item, 0);
+		MoveChild(item, -1);
 	}
 
 	protected override void ClampPosition()
