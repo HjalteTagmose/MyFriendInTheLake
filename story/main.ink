@@ -268,8 +268,13 @@ Hey man, what you need?
     ~ show_item("drugsdelivered")
     -> vlad_start
  + [harukiya]
+    {
+    - delivered_drugs:
     That's the club where Kenzo hangs out
     Not really my style
+    - else:
+    Never heard of it
+    }
     -> vlad_start
  + [cold]
     I got stuff, that'll make you feel like you're on the beach
@@ -285,8 +290,13 @@ Hey man, what you need?
     }
     -> vlad_start
  + [frankdebt]
+    {
+    - delivered_drugs:
     He owed me at least a grand
     We're even now though
+    - else:
+    I don't know who that is
+    }
     -> vlad_start
  + [money]
     That's what Kenzo paid you? Hah!
@@ -302,14 +312,26 @@ Hey man, what you need?
     That's for making me wait 
     -> vlad_start
  + [kenzojob]
+    {
+    - delivered_drugs:
     I figured he did 
     Bet he pays shit too
     Tell me if you need more work, I know a guy
     ~ show_item("vladjob")
+    - else:
+    If Kenzo sent you, you should have something for me
+    We can discuss afterwards
+    }
     -> vlad_start
  + [kenzoopinion]
+    {
+    - delivered_drugs:
     He can think what he wants
     He won't be around much longer 
+    - else:
+    If Kenzo sent you, you should have something for me
+    We can discuss afterwards
+    }
     -> vlad_start
  + [lake]
     It's pretty close to here 
