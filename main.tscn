@@ -1,4 +1,4 @@
-[gd_scene load_steps=51 format=3 uid="uid://roxthgw71bi6"]
+[gd_scene load_steps=58 format=3 uid="uid://roxthgw71bi6"]
 
 [ext_resource type="Resource" uid="uid://bulreogc3l6jq" path="res://story/main.ink" id="2_1ep76"]
 [ext_resource type="Texture2D" uid="uid://cxc3ck2jjakoh" path="res://sprites/characters/vlad.png" id="2_4o28k"]
@@ -19,6 +19,7 @@
 [ext_resource type="Script" path="res://scripts/Actions/ActionsPanel.cs" id="10_bo17g"]
 [ext_resource type="Texture2D" uid="uid://b0m0mp2e3xme4" path="res://sprites/items/drugs.png" id="10_ka0tu"]
 [ext_resource type="Texture2D" uid="uid://5wnlsftxwwwa" path="res://sprites/inventory/line.png" id="10_y5y2k"]
+[ext_resource type="Texture2D" uid="uid://b5458oufpupgi" path="res://sprites/items/tonynote.png" id="10_yyayr"]
 [ext_resource type="Script" path="res://scripts/Actions/StoryAction.cs" id="11_c527t"]
 [ext_resource type="Texture2D" uid="uid://dyexdy4fcocjb" path="res://sprites/actions/ask1.png" id="12_0hljw"]
 [ext_resource type="Texture2D" uid="uid://bcypee4pp6d7j" path="res://sprites/areas/city1.png" id="13_kya4i"]
@@ -32,6 +33,9 @@
 [ext_resource type="Texture2D" uid="uid://baw2gyidnubls" path="res://sprites/actions/go1.png" id="16_b137r"]
 [ext_resource type="Texture2D" uid="uid://34irhwhrmw50" path="res://sprites/actions/go2.png" id="17_tgdns"]
 [ext_resource type="PackedScene" uid="uid://cix4rjvu46ci2" path="res://lake.tscn" id="20_10yug"]
+[ext_resource type="Texture2D" uid="uid://cem60fywf28ga" path="res://sprites/areas/office 1.png" id="20_ncjl3"]
+[ext_resource type="Texture2D" uid="uid://bv06q7j2uigio" path="res://sprites/areas/office 2.png" id="21_2xi40"]
+[ext_resource type="Texture2D" uid="uid://b2wsuskk6w7rl" path="res://sprites/characters/tony.png" id="24_74ga7"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_a3ces"]
 bg_color = Color(1, 1, 1, 1)
@@ -40,6 +44,9 @@ bg_color = Color(1, 1, 1, 1)
 texture = ExtResource("8_hmrae")
 axis_stretch_horizontal = 2
 axis_stretch_vertical = 2
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ucdoe"]
+texture = ExtResource("10_yyayr")
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_iirac"]
 texture = ExtResource("9_ou88d")
@@ -72,6 +79,16 @@ frame_0/texture = ExtResource("13_kya4i")
 frame_0/duration = 0.5
 frame_1/texture = ExtResource("14_8o8ly")
 frame_1/duration = 0.5
+
+[sub_resource type="AnimatedTexture" id="AnimatedTexture_6lqne"]
+frames = 2
+frame_0/texture = ExtResource("20_ncjl3")
+frame_0/duration = 0.5
+frame_1/texture = ExtResource("21_2xi40")
+frame_1/duration = 0.5
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ukdxh"]
+texture = ExtResource("24_74ga7")
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_tsonf"]
 texture = ExtResource("2_4o28k")
@@ -119,13 +136,15 @@ script = ExtResource("3_tq3fv")
 npcSpeechBubble = NodePath("../UI/Story/SpeechBubble")
 previewSpeechBubble = NodePath("../UI/Story/PreviewBubble")
 
-[node name="LocationManager" type="Node" parent="." node_paths=PackedStringArray("city", "park", "lake", "vlad", "kenzo")]
+[node name="LocationManager" type="Node" parent="." node_paths=PackedStringArray("city", "park", "lake", "office", "vlad", "kenzo", "tony")]
 script = ExtResource("4_70ipd")
 city = NodePath("../UI/Story/City")
 park = NodePath("../UI/Story/Park")
 lake = NodePath("../UI/Story/Lake")
+office = NodePath("../UI/Story/Office")
 vlad = NodePath("../UI/Story/Vlad")
 kenzo = NodePath("../UI/Story/Kenzo")
+tony = NodePath("../UI/Story/Tony")
 
 [node name="UI" type="Control" parent="."]
 layout_mode = 3
@@ -178,6 +197,22 @@ Leave = "Go to park"
 
 [node name="Label" parent="UI/Inventory/Background/Park" index="0"]
 text = "Park"
+
+[node name="TonyNote" type="Panel" parent="UI/Inventory/Background"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 0
+offset_left = 491.0
+offset_top = 1004.0
+offset_right = 774.0
+offset_bottom = 1167.0
+theme = ExtResource("7_kb40a")
+theme_override_styles/panel = SubResource("StyleBoxTexture_ucdoe")
+script = ExtResource("6_ms88t")
+CanLeave = true
+Option = "office"
+Question = "Tony?"
+Thought = "This is in the nice part of town"
+Leave = "Go to Tony's"
 
 [node name="FrankDebt" parent="UI/Inventory/Background" instance=ExtResource("8_s3ip1")]
 layout_mode = 0
@@ -396,6 +431,16 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = SubResource("AnimatedTexture_g50ml")
 
+[node name="Office" type="TextureRect" parent="UI/Story"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("AnimatedTexture_6lqne")
+
 [node name="Lake" parent="UI/Story" instance=ExtResource("20_10yug")]
 layout_mode = 0
 anchors_preset = 0
@@ -403,6 +448,22 @@ anchor_right = 0.0
 anchor_bottom = 0.0
 grow_horizontal = 1
 grow_vertical = 1
+
+[node name="Tony" type="Panel" parent="UI/Story"]
+visible = false
+custom_minimum_size = Vector2(0, 300)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_top = 409.0
+offset_right = -2.0
+offset_bottom = -38.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxTexture_ukdxh")
 
 [node name="Vlad" type="Panel" parent="UI/Story"]
 visible = false

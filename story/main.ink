@@ -4,6 +4,7 @@ VAR received_drugs = false
 VAR do_city_intro = true
 VAR do_park_intro = true
 VAR do_lake_intro = true
+VAR do_office_intro = true
 
 EXTERNAL show_item(name)
 EXTERNAL hide_item(name)
@@ -21,6 +22,7 @@ EXTERNAL set_line_type(type)
 {
 - do_lake_intro:
 ~ show_item("portrait")
+~ show_item("tonynote") // TEST
 Oh Frank, you really messed up this time
 You just had to leave for a moment, yet you never came back
 I still have the name of the bar where we were supposed to meet
@@ -29,12 +31,11 @@ I still have the name of the bar where we were supposed to meet
 Maybe next time
 }
 ~ do_lake_intro = false
+~ intro = false
+~ set_line_type("story")
 -> lake_start
 
 === lake_start ===
-~ intro = false
-~ do_lake_intro = false
-~ set_line_type("story")
  + [unknown] 
     I don't know what this has to do with anything
     -> lake_start
@@ -85,6 +86,7 @@ Maybe next time
  // LOCATIONS
  + [loc_city] -> kenzo_intro
  + [loc_park] -> vlad_intro
+ + [loc_office] -> tony_intro
  
  
 
@@ -116,12 +118,11 @@ Don't I know you?
 ~ do_city_intro = false
 ~ set_line_type("speech")
 ~ show_char("kenzo")
+~ intro = false
 
 -> kenzo_start
 
 === kenzo_start ===
-~ intro = false
-~ set_line_type("speech")
  + [unknown]
     Huh?
     -> kenzo_start
@@ -184,6 +185,7 @@ Don't I know you?
  // LOCATIONS
  + [loc_park] -> vlad_intro
  + [loc_lake] -> lake_intro
+ + [loc_office] -> tony_intro
 
 
 
@@ -265,11 +267,47 @@ Hey man, what you need?
  // LOCATIONS
  + [loc_city] -> kenzo_intro
  + [loc_lake] -> lake_intro
+ + [loc_office] -> tony_intro
  
 
 
 
 
+
+
+
+
+//
+// TONY     TONY    TONY    TONY
+//
+=== tony_intro ===
+{
+- do_office_intro:
+~ intro = true
+~ set_line_type("story")
+You get to the address Vlad wrote for you
+Immediately you're approached by a man who seems to have been anticipating you
+He escorts you into a nearby building 
+and before you know it, you're stuffed into a small smoke-filled room
+}
+
+~ do_office_intro = false
+~ set_line_type("speech")
+~ show_char("tony")
+~ intro = false
+Heya kid
+Vlad tells me you're a distributor for Kenzo
+So why don't you tell me about your career ambitions?
+-> tony_start
+
+=== tony_start ===
+ + [unknown]
+    Not sure, I get your point, kid
+    -> tony_start
+
+
+
+//We'd like to see that operation cease
 
 
 

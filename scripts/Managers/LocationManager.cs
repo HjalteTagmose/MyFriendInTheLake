@@ -2,8 +2,8 @@ using Godot;
 
 public partial class LocationManager : Node
 {
-	[Export] private Control city, park, lake;
-	[Export] private Control vlad, kenzo;
+	[Export] private Control city, park, lake, office;
+	[Export] private Control vlad, kenzo, tony;
 
 	public static LocationManager Instance;
     public override void _EnterTree() => Instance = this;
@@ -23,7 +23,9 @@ public partial class LocationManager : Node
 		park.Hide();
 		vlad.Hide();
 		city.Hide();
+		tony.Hide();
 		kenzo.Hide();
+		office.Hide();
 
 		switch (name)
 		{
@@ -39,6 +41,10 @@ public partial class LocationManager : Node
 				lake.Show();
 				StoryController.Instance.PickOption("loc_lake");
 				break;
+			case "office":
+				office.Show();
+				StoryController.Instance.PickOption("loc_office");
+				break;
 			default: GD.Print($"No location called {name}"); break;
 		}
 		GD.Print($"Go to {name}");
@@ -50,6 +56,7 @@ public partial class LocationManager : Node
 		{
 			case "vlad": return vlad;
 			case "kenzo": return kenzo;
+			case "tony": return tony;
 			default: GD.Print($"No character called {name}"); return null;
 		}
 	}
