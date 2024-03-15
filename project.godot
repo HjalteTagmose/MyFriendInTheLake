@@ -16,8 +16,9 @@ run/main_scene="res://start.tscn"
 config/features=PackedStringArray("4.2", "C#", "GL Compatibility")
 boot_splash/bg_color=Color(0, 0, 0, 1)
 boot_splash/show_image=false
-config/icon="res://sprites/icon/icon.png"
-config/windows_native_icon="res://sprites/icon/icon.png"
+config/icon="res://sprites/icon/icon.ico"
+config/macos_native_icon="res://sprites/icon/icon.ico"
+config/windows_native_icon="res://sprites/icon/icon.ico"
 
 [display]
 

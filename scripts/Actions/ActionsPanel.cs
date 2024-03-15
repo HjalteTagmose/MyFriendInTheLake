@@ -22,7 +22,7 @@ public partial class ActionsPanel : Panel
 	{
 		ask.Scale = think.Scale = go.Scale = Vector2.One;
 
-		if (Item.draggedItem == null) // || !DialogueSystem.Instance.WaitingForChoice
+		if (Item.draggedItem == null || DialogueSystem.Instance.WaitingForChoice)
 		{
 			ask.SetAlpha(.5f);
 			think.SetAlpha(.5f);

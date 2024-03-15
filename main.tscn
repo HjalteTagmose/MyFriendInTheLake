@@ -61,7 +61,7 @@ texture = ExtResource("15_hj5qn")
 texture = ExtResource("10_ka0tu")
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_esqr7"]
-bg_color = Color(0, 0, 0, 0.862745)
+bg_color = Color(0, 0, 0, 0.560784)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lilpc"]
 bg_color = Color(1, 1, 1, 1)
@@ -557,7 +557,6 @@ Leave = ""
 text = "Why hire me?"
 
 [node name="Overlay" type="Panel" parent="UI/Inventory/Background"]
-visible = false
 texture_repeat = 2
 custom_minimum_size = Vector2(2048, 2048)
 layout_mode = 1

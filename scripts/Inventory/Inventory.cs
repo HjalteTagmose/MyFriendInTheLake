@@ -5,10 +5,12 @@ using Godot;
 public partial class Inventory : Panel
 {
 	private Item[] items;
+	private InventoryBackground background;
 
 	public override void _Ready()
 	{
-		items = GetChild(0)
+		background = GetChild<InventoryBackground>(0); 
+		items = background
 				.GetChildren()
 				.Where(c => c is Item)
 				.Select(c => c as Item)
@@ -32,7 +34,10 @@ public partial class Inventory : Panel
 	public void ShowItem(string name)
 	{
 		if (TryGetItem(name, out Item item))
+		{
 			item.Show();
+			background.MoveChild(item, -1);
+		}
 	}
 
 	public void HideItem(string name)

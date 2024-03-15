@@ -21,6 +21,9 @@ public partial class StoryAction : Panel
 		if(data.As<Draggable>() is InventoryBackground)
 			return true;
 		
+		if (DialogueSystem.Instance.WaitingForChoice)
+			return false;
+
 		var item = data.As<Item>(); 
 		var bubble = (BubbleType)(type+1);
 		string previewText = "N/A";

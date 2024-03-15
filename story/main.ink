@@ -545,14 +545,10 @@ So why don't you tell me about your career ambitions?
     But I highly encourage you to take my offer
     -> tony_start
     
-
-// tonythreat
-// whyhireme
-// taketonyjob
-// refusetonyjob
-
-//We'd like to see that operation cease
-
+ // LOCATIONS
+ + [loc_city] -> kenzo_intro
+ + [loc_lake] -> lake_intro
+ + [loc_park] -> vlad_intro
 
 === refuse_job ===
 You're making a mistake kid

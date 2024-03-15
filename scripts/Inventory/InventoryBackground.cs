@@ -18,7 +18,7 @@ public partial class InventoryBackground : Draggable
 		base._Process(delta);
 
 		bool intro = DialogueSystem.Instance.InIntro;
-		overlay.Visible = intro;
+		overlay.Visible = intro || DialogueSystem.Instance.WaitingForChoice;
 		MoveChild(overlay, -1);
 	}
 
