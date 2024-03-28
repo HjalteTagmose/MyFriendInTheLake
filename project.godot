@@ -20,6 +20,11 @@ config/icon="res://sprites/icon/icon.ico"
 config/macos_native_icon="res://sprites/icon/icon.ico"
 config/windows_native_icon="res://sprites/icon/icon.ico"
 
+[autoload]
+
+FrameRateCap="*res://scripts/frame_rate_cap.gd"
+Fullscreen="*res://scripts/fullscreen.gd"
+
 [display]
 
 window/size/viewport_width=1920
